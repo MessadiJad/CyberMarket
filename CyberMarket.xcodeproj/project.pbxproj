@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		E11087932540854C00BF38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087922540854C00BF38F0 /* AppDelegate.swift */; };
 		E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087942540854C00BF38F0 /* SceneDelegate.swift */; };
-		E11087972540854C00BF38F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087962540854C00BF38F0 /* ViewController.swift */; };
-		E110879A2540854C00BF38F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11087982540854C00BF38F0 /* Main.storyboard */; };
+		E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087962540854C00BF38F0 /* ListItemsViewController.swift */; };
 		E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */; };
 		E110879F2540854F00BF38F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E110879E2540854F00BF38F0 /* Assets.xcassets */; };
 		E11087A22540854F00BF38F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */; };
 		E11087AD2540855000BF38F0 /* CyberMarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087AC2540855000BF38F0 /* CyberMarketTests.swift */; };
 		E11087B82540855000BF38F0 /* CyberMarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087B72540855000BF38F0 /* CyberMarketUITests.swift */; };
+		E11087DB25408BC800BF38F0 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087DA25408BC800BF38F0 /* ListViewModel.swift */; };
+		E11087E425408C7400BF38F0 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087E325408C7400BF38F0 /* ItemCell.swift */; };
+		E11087F825408EB200BF38F0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087F725408EB200BF38F0 /* Item.swift */; };
+		E11087FE254092BD00BF38F0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087FD254092BD00BF38F0 /* Environment.swift */; };
+		E15D04AF25409C44008DC516 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extension.swift */; };
+		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,7 @@
 		E110878F2540854C00BF38F0 /* CyberMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CyberMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11087922540854C00BF38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11087942540854C00BF38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E11087962540854C00BF38F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E11087992540854C00BF38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E11087962540854C00BF38F0 /* ListItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsViewController.swift; sourceTree = "<group>"; };
 		E110879C2540854C00BF38F0 /* CyberMarket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CyberMarket.xcdatamodel; sourceTree = "<group>"; };
 		E110879E2540854F00BF38F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E11087A12540854F00BF38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,12 @@
 		E11087B32540855000BF38F0 /* CyberMarketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyberMarketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11087B72540855000BF38F0 /* CyberMarketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyberMarketUITests.swift; sourceTree = "<group>"; };
 		E11087B92540855000BF38F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11087DA25408BC800BF38F0 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		E11087E325408C7400BF38F0 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		E11087F725408EB200BF38F0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E11087FD254092BD00BF38F0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		E15D04AE25409C44008DC516 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +113,9 @@
 			children = (
 				E11087922540854C00BF38F0 /* AppDelegate.swift */,
 				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
-				E11087962540854C00BF38F0 /* ViewController.swift */,
-				E11087982540854C00BF38F0 /* Main.storyboard */,
+				E15D04B32540A38A008DC516 /* Networking */,
+				E11087FC2540927D00BF38F0 /* Constants */,
+				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E110879E2540854F00BF38F0 /* Assets.xcassets */,
 				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
 				E11087A32540854F00BF38F0 /* Info.plist */,
@@ -129,6 +140,42 @@
 				E11087B92540855000BF38F0 /* Info.plist */,
 			);
 			path = CyberMarketUITests;
+			sourceTree = "<group>";
+		};
+		E11087D425408B9800BF38F0 /* ListItemModule */ = {
+			isa = PBXGroup;
+			children = (
+				E11087E225408C5200BF38F0 /* Cell */,
+				E11087962540854C00BF38F0 /* ListItemsViewController.swift */,
+				E11087DA25408BC800BF38F0 /* ListViewModel.swift */,
+				E11087F725408EB200BF38F0 /* Item.swift */,
+			);
+			path = ListItemModule;
+			sourceTree = "<group>";
+		};
+		E11087E225408C5200BF38F0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E11087E325408C7400BF38F0 /* ItemCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E11087FC2540927D00BF38F0 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E11087FD254092BD00BF38F0 /* Environment.swift */,
+				E15D04AE25409C44008DC516 /* Extension.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E15D04B32540A38A008DC516 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E15D04C32540AAF1008DC516 /* ItemService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +283,6 @@
 			files = (
 				E11087A22540854F00BF38F0 /* LaunchScreen.storyboard in Resources */,
 				E110879F2540854F00BF38F0 /* Assets.xcassets in Resources */,
-				E110879A2540854C00BF38F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +307,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11087972540854C00BF38F0 /* ViewController.swift in Sources */,
+				E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */,
+				E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */,
+				E11087F825408EB200BF38F0 /* Item.swift in Sources */,
 				E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */,
+				E11087DB25408BC800BF38F0 /* ListViewModel.swift in Sources */,
+				E15D04AF25409C44008DC516 /* Extension.swift in Sources */,
+				E11087E425408C7400BF38F0 /* ItemCell.swift in Sources */,
 				E11087932540854C00BF38F0 /* AppDelegate.swift in Sources */,
 				E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */,
+				E11087FE254092BD00BF38F0 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,14 +352,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E11087982540854C00BF38F0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E11087992540854C00BF38F0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

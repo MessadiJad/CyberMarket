@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E11087932540854C00BF38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087922540854C00BF38F0 /* AppDelegate.swift */; };
+		E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087942540854C00BF38F0 /* SceneDelegate.swift */; };
+		E11087972540854C00BF38F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087962540854C00BF38F0 /* ViewController.swift */; };
+		E110879A2540854C00BF38F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11087982540854C00BF38F0 /* Main.storyboard */; };
+		E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */; };
+		E110879F2540854F00BF38F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E110879E2540854F00BF38F0 /* Assets.xcassets */; };
+		E11087A22540854F00BF38F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */; };
+		E11087AD2540855000BF38F0 /* CyberMarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087AC2540855000BF38F0 /* CyberMarketTests.swift */; };
+		E11087B82540855000BF38F0 /* CyberMarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087B72540855000BF38F0 /* CyberMarketUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E11087A92540855000BF38F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E11087872540854B00BF38F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E110878E2540854B00BF38F0;
+			remoteInfo = CyberMarket;
+		};
+		E11087B42540855000BF38F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E11087872540854B00BF38F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E110878E2540854B00BF38F0;
+			remoteInfo = CyberMarket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E110878F2540854C00BF38F0 /* CyberMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CyberMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11087922540854C00BF38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E11087942540854C00BF38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E11087962540854C00BF38F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E11087992540854C00BF38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E110879C2540854C00BF38F0 /* CyberMarket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CyberMarket.xcdatamodel; sourceTree = "<group>"; };
+		E110879E2540854F00BF38F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E11087A12540854F00BF38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E11087A32540854F00BF38F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11087A82540855000BF38F0 /* CyberMarketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyberMarketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11087AC2540855000BF38F0 /* CyberMarketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyberMarketTests.swift; sourceTree = "<group>"; };
+		E11087AE2540855000BF38F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11087B32540855000BF38F0 /* CyberMarketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyberMarketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11087B72540855000BF38F0 /* CyberMarketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyberMarketUITests.swift; sourceTree = "<group>"; };
+		E11087B92540855000BF38F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E110878C2540854B00BF38F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087A52540855000BF38F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087B02540855000BF38F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E11087862540854B00BF38F0 = {
+			isa = PBXGroup;
+			children = (
+				E11087912540854C00BF38F0 /* CyberMarket */,
+				E11087AB2540855000BF38F0 /* CyberMarketTests */,
+				E11087B62540855000BF38F0 /* CyberMarketUITests */,
+				E11087902540854C00BF38F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E11087902540854C00BF38F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E110878F2540854C00BF38F0 /* CyberMarket.app */,
+				E11087A82540855000BF38F0 /* CyberMarketTests.xctest */,
+				E11087B32540855000BF38F0 /* CyberMarketUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E11087912540854C00BF38F0 /* CyberMarket */ = {
+			isa = PBXGroup;
+			children = (
+				E11087922540854C00BF38F0 /* AppDelegate.swift */,
+				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
+				E11087962540854C00BF38F0 /* ViewController.swift */,
+				E11087982540854C00BF38F0 /* Main.storyboard */,
+				E110879E2540854F00BF38F0 /* Assets.xcassets */,
+				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
+				E11087A32540854F00BF38F0 /* Info.plist */,
+				E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */,
+			);
+			path = CyberMarket;
+			sourceTree = "<group>";
+		};
+		E11087AB2540855000BF38F0 /* CyberMarketTests */ = {
+			isa = PBXGroup;
+			children = (
+				E11087AC2540855000BF38F0 /* CyberMarketTests.swift */,
+				E11087AE2540855000BF38F0 /* Info.plist */,
+			);
+			path = CyberMarketTests;
+			sourceTree = "<group>";
+		};
+		E11087B62540855000BF38F0 /* CyberMarketUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E11087B72540855000BF38F0 /* CyberMarketUITests.swift */,
+				E11087B92540855000BF38F0 /* Info.plist */,
+			);
+			path = CyberMarketUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E110878E2540854B00BF38F0 /* CyberMarket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11087BC2540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarket" */;
+			buildPhases = (
+				E110878B2540854B00BF38F0 /* Sources */,
+				E110878C2540854B00BF38F0 /* Frameworks */,
+				E110878D2540854B00BF38F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CyberMarket;
+			productName = CyberMarket;
+			productReference = E110878F2540854C00BF38F0 /* CyberMarket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E11087A72540855000BF38F0 /* CyberMarketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11087BF2540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarketTests" */;
+			buildPhases = (
+				E11087A42540855000BF38F0 /* Sources */,
+				E11087A52540855000BF38F0 /* Frameworks */,
+				E11087A62540855000BF38F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E11087AA2540855000BF38F0 /* PBXTargetDependency */,
+			);
+			name = CyberMarketTests;
+			productName = CyberMarketTests;
+			productReference = E11087A82540855000BF38F0 /* CyberMarketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E11087B22540855000BF38F0 /* CyberMarketUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11087C22540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarketUITests" */;
+			buildPhases = (
+				E11087AF2540855000BF38F0 /* Sources */,
+				E11087B02540855000BF38F0 /* Frameworks */,
+				E11087B12540855000BF38F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E11087B52540855000BF38F0 /* PBXTargetDependency */,
+			);
+			name = CyberMarketUITests;
+			productName = CyberMarketUITests;
+			productReference = E11087B32540855000BF38F0 /* CyberMarketUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E11087872540854B00BF38F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					E110878E2540854B00BF38F0 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					E11087A72540855000BF38F0 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = E110878E2540854B00BF38F0;
+					};
+					E11087B22540855000BF38F0 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = E110878E2540854B00BF38F0;
+					};
+				};
+			};
+			buildConfigurationList = E110878A2540854B00BF38F0 /* Build configuration list for PBXProject "CyberMarket" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E11087862540854B00BF38F0;
+			productRefGroup = E11087902540854C00BF38F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E110878E2540854B00BF38F0 /* CyberMarket */,
+				E11087A72540855000BF38F0 /* CyberMarketTests */,
+				E11087B22540855000BF38F0 /* CyberMarketUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E110878D2540854B00BF38F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11087A22540854F00BF38F0 /* LaunchScreen.storyboard in Resources */,
+				E110879F2540854F00BF38F0 /* Assets.xcassets in Resources */,
+				E110879A2540854C00BF38F0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087A62540855000BF38F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087B12540855000BF38F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E110878B2540854B00BF38F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11087972540854C00BF38F0 /* ViewController.swift in Sources */,
+				E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */,
+				E11087932540854C00BF38F0 /* AppDelegate.swift in Sources */,
+				E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087A42540855000BF38F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11087AD2540855000BF38F0 /* CyberMarketTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11087AF2540855000BF38F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11087B82540855000BF38F0 /* CyberMarketUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E11087AA2540855000BF38F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E110878E2540854B00BF38F0 /* CyberMarket */;
+			targetProxy = E11087A92540855000BF38F0 /* PBXContainerItemProxy */;
+		};
+		E11087B52540855000BF38F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E110878E2540854B00BF38F0 /* CyberMarket */;
+			targetProxy = E11087B42540855000BF38F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E11087982540854C00BF38F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E11087992540854C00BF38F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E11087A12540854F00BF38F0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E11087BA2540855000BF38F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E11087BB2540855000BF38F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E11087BD2540855000BF38F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E11087BE2540855000BF38F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E11087C02540855000BF38F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarketTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CyberMarket.app/CyberMarket";
+			};
+			name = Debug;
+		};
+		E11087C12540855000BF38F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarketTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CyberMarket.app/CyberMarket";
+			};
+			name = Release;
+		};
+		E11087C32540855000BF38F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CyberMarket;
+			};
+			name = Debug;
+		};
+		E11087C42540855000BF38F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MEA78ZYGH;
+				INFOPLIST_FILE = CyberMarketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.messadi.CyberMarketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CyberMarket;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E110878A2540854B00BF38F0 /* Build configuration list for PBXProject "CyberMarket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11087BA2540855000BF38F0 /* Debug */,
+				E11087BB2540855000BF38F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11087BC2540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11087BD2540855000BF38F0 /* Debug */,
+				E11087BE2540855000BF38F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11087BF2540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11087C02540855000BF38F0 /* Debug */,
+				E11087C12540855000BF38F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11087C22540855000BF38F0 /* Build configuration list for PBXNativeTarget "CyberMarketUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11087C32540855000BF38F0 /* Debug */,
+				E11087C42540855000BF38F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E110879C2540854C00BF38F0 /* CyberMarket.xcdatamodel */,
+			);
+			currentVersion = E110879C2540854C00BF38F0 /* CyberMarket.xcdatamodel */;
+			path = CyberMarket.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E11087872540854B00BF38F0 /* Project object */;
+}

@@ -21,6 +21,17 @@
 		E11087FE254092BD00BF38F0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087FD254092BD00BF38F0 /* Environment.swift */; };
 		E15D04AF25409C44008DC516 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extension.swift */; };
 		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
+		E1C22FD0254170BF0052AC17 /* NavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FCF254170BF0052AC17 /* NavigationBarButton.swift */; };
+		E1C22FD525417B740052AC17 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FD425417B740052AC17 /* AppConstants.swift */; };
+		E1C22FDA2541A2AA0052AC17 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FD92541A2AA0052AC17 /* TriangleView.swift */; };
+		E1C22FE22541BD190052AC17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FE12541BD190052AC17 /* Colors.swift */; };
+		E1C22FE72541BD840052AC17 /* DateGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FE62541BD830052AC17 /* DateGeneric.swift */; };
+		E1C22FF02541D8C30052AC17 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FEF2541D8C30052AC17 /* Category.swift */; };
+		E1C2301225420A540052AC17 /* DetailsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2301125420A540052AC17 /* DetailsItemViewController.swift */; };
+		E1C2301725420B8B0052AC17 /* DetailsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2301625420B8B0052AC17 /* DetailsItemViewModel.swift */; };
+		E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2303025422FE10052AC17 /* ListItemsCoordinator.swift */; };
+		E1C2303325422FE20052AC17 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2303125422FE20052AC17 /* AppCoordinator.swift */; };
+		E1C230A6254236400052AC17 /* DetailsItemCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +72,17 @@
 		E11087FD254092BD00BF38F0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E15D04AE25409C44008DC516 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		E1C22FCF254170BF0052AC17 /* NavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarButton.swift; sourceTree = "<group>"; };
+		E1C22FD425417B740052AC17 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		E1C22FD92541A2AA0052AC17 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		E1C22FE12541BD190052AC17 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E1C22FE62541BD830052AC17 /* DateGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateGeneric.swift; sourceTree = "<group>"; };
+		E1C22FEF2541D8C30052AC17 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E1C2301125420A540052AC17 /* DetailsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemViewController.swift; sourceTree = "<group>"; };
+		E1C2301625420B8B0052AC17 /* DetailsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemViewModel.swift; sourceTree = "<group>"; };
+		E1C2303025422FE10052AC17 /* ListItemsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemsCoordinator.swift; sourceTree = "<group>"; };
+		E1C2303125422FE20052AC17 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsItemCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +133,10 @@
 		E11087912540854C00BF38F0 /* CyberMarket */ = {
 			isa = PBXGroup;
 			children = (
+				E1C2301025420A1F0052AC17 /* DetailsItemModule */,
+				E1C22FF42541E4AD0052AC17 /* Coordinator */,
+				E1C22FEE2541D8AF0052AC17 /* Model */,
+				E1C22FCE254170960052AC17 /* Utility */,
 				E11087922540854C00BF38F0 /* AppDelegate.swift */,
 				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
 				E15D04B32540A38A008DC516 /* Networking */,
@@ -148,7 +174,6 @@
 				E11087E225408C5200BF38F0 /* Cell */,
 				E11087962540854C00BF38F0 /* ListItemsViewController.swift */,
 				E11087DA25408BC800BF38F0 /* ListViewModel.swift */,
-				E11087F725408EB200BF38F0 /* Item.swift */,
 			);
 			path = ListItemModule;
 			sourceTree = "<group>";
@@ -164,8 +189,11 @@
 		E11087FC2540927D00BF38F0 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				E1C22FE62541BD830052AC17 /* DateGeneric.swift */,
+				E1C22FE12541BD190052AC17 /* Colors.swift */,
 				E11087FD254092BD00BF38F0 /* Environment.swift */,
 				E15D04AE25409C44008DC516 /* Extension.swift */,
+				E1C22FD425417B740052AC17 /* AppConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -176,6 +204,43 @@
 				E15D04C32540AAF1008DC516 /* ItemService.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		E1C22FCE254170960052AC17 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E1C22FCF254170BF0052AC17 /* NavigationBarButton.swift */,
+				E1C22FD92541A2AA0052AC17 /* TriangleView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		E1C22FEE2541D8AF0052AC17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E11087F725408EB200BF38F0 /* Item.swift */,
+				E1C22FEF2541D8C30052AC17 /* Category.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1C22FF42541E4AD0052AC17 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E1C2303125422FE20052AC17 /* AppCoordinator.swift */,
+				E1C2303025422FE10052AC17 /* ListItemsCoordinator.swift */,
+				E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E1C2301025420A1F0052AC17 /* DetailsItemModule */ = {
+			isa = PBXGroup;
+			children = (
+				E1C2301125420A540052AC17 /* DetailsItemViewController.swift */,
+				E1C2301625420B8B0052AC17 /* DetailsItemViewModel.swift */,
+			);
+			path = DetailsItemModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,13 +374,24 @@
 			files = (
 				E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */,
 				E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */,
+				E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */,
+				E1C2301225420A540052AC17 /* DetailsItemViewController.swift in Sources */,
 				E11087F825408EB200BF38F0 /* Item.swift in Sources */,
+				E1C22FE22541BD190052AC17 /* Colors.swift in Sources */,
 				E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */,
 				E11087DB25408BC800BF38F0 /* ListViewModel.swift in Sources */,
+				E1C22FD0254170BF0052AC17 /* NavigationBarButton.swift in Sources */,
+				E1C2301725420B8B0052AC17 /* DetailsItemViewModel.swift in Sources */,
+				E1C22FF02541D8C30052AC17 /* Category.swift in Sources */,
+				E1C22FDA2541A2AA0052AC17 /* TriangleView.swift in Sources */,
+				E1C2303325422FE20052AC17 /* AppCoordinator.swift in Sources */,
 				E15D04AF25409C44008DC516 /* Extension.swift in Sources */,
+				E1C22FD525417B740052AC17 /* AppConstants.swift in Sources */,
 				E11087E425408C7400BF38F0 /* ItemCell.swift in Sources */,
 				E11087932540854C00BF38F0 /* AppDelegate.swift in Sources */,
+				E1C22FE72541BD840052AC17 /* DateGeneric.swift in Sources */,
 				E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */,
+				E1C230A6254236400052AC17 /* DetailsItemCoordinator.swift in Sources */,
 				E11087FE254092BD00BF38F0 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,15 +7,27 @@
 
 import UIKit
 
-class ListViewController: UITableViewController {
-    
+
+class ListItemsViewController: UITableViewController {
     
     let cellReuseIdendifier = "itemCellId"
+
+    private var viewModel = ListViewModel()
+
     
-    private let viewModel = ListViewModel()
+    init(viewModel: ListViewModel ) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         
+        initNavigationBar()
+        tableView.backgroundColor = UIColor.init(hex: "#EBEBEB")
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         
         viewModel.getItemList { loaded in
@@ -43,7 +55,18 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let viewModel = DetailsItemViewModel()
+        let details = DetailsItemViewController(viewModel:viewModel)
+        navigationController!.show(details, sender: self)
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        let verticalPadding: CGFloat = 5
+
+        let maskLayer = CALayer()
+        maskLayer.backgroundColor = UIColor.white.cgColor
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        cell.layer.mask = maskLayer
     }
     
 }

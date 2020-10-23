@@ -9,7 +9,6 @@ class Item {
     
     var id: Int!
     var category_id: Int!
-    var categoryName: String!
     var title: String!
     var description: String!
     var price: Float!

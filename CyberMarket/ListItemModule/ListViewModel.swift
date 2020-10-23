@@ -21,7 +21,6 @@ class ListViewModel {
             case .Failure(let error):
                 print("Error fetching items: \(error)")
             case .Success(let returnedItem):
-                self.getCategory()
                 self.items = returnedItem
                 completionHandler(true)
             }

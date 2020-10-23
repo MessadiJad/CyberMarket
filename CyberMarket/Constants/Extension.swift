@@ -60,6 +60,10 @@ extension UIImageView {
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
             }
+            
+            
+            
+            
         }.resume()
     }
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {

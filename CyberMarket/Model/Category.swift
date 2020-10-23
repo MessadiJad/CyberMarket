@@ -17,9 +17,5 @@ class Category {
         self.color = color
     }
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-    }
     
 }

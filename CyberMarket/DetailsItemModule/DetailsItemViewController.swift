@@ -34,7 +34,6 @@ class DetailsItemViewController: UIViewController {
         self.title = viewModel.categoryName.name
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         self.navigationController?.navigationBar.tintColor = .black
-
         setupUI()
     }
     
@@ -45,7 +44,7 @@ class DetailsItemViewController: UIViewController {
         setupItemDiscriptionTextView(description: viewModel.description)
         setupItemPriceView(price: "  \(String(viewModel.price)) €")
         setupUrgentIndicator(urgent: viewModel.isUrgent)
-        setupCategoryViewIndicator(color: UIColor.red)
+        setupCategoryViewIndicator(color: viewModel.categoryName.color)
     }
     
     func setupImageItem(imageUrl: String) {
@@ -93,7 +92,7 @@ class DetailsItemViewController: UIViewController {
     }
     
     func setupItemPriceView(price: String) {
-        itemPriceButton.backgroundColor = UIColor.red
+        itemPriceButton.backgroundColor = viewModel.categoryName.color
         itemPriceButton.setTitle(price, for: .normal)
         itemPriceButton.setTitleColor(UIColor.white, for: .normal)
         itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)

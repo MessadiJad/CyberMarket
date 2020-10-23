@@ -15,20 +15,25 @@ class ItemCell: UITableViewCell {
     var itemImage = UIImageView()
     let categoryView = UIView()
     
+    var category : Category? {
+        didSet {
+            setupCategoryView(color: category!.color)
+        }
+    }
+    
     var item : Item? {
         didSet {
             setupUrgentIcon(urgent: item!.is_urgent)
-            setupCategoryView(id: item!.category_id)
             setupItemImage(imageUrl: item!.images_url)
             setupItemTitleLabel(title: item!.title)
             setupItemCreatedDateLabel(date: DateApp.dateLocal(fromString: (item?.creation_date)!, withFormat: .isoFull)!)
             setupItemPriceLabel(price:  String(item!.price) + " €")
         }
     }
-   
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,13 +45,13 @@ class ItemCell: UITableViewCell {
         urgentImageView.tintColor = UIColor.red
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         urgentImageView.layer.masksToBounds = true
-        urgentImageView.isHidden = urgent
+        urgentImageView.isHidden = !urgent
         addSubview(urgentImageView)
         urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 35, height: 35, enableInsets: false)
     }
     
-    func setupCategoryView(id: Int){
-        categoryView.backgroundColor = UIColor.randomColor(seed: String(id))
+    func setupCategoryView(color: UIColor){
+        categoryView.backgroundColor = color
         addSubview(categoryView)
         
         categoryView.anchor(top: self.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 15, height: 0, enableInsets: true)

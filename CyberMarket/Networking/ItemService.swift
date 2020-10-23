@@ -64,6 +64,9 @@ class ItemService {
                             guard let urgent = itemEntry?["is_urgent"] as? Bool else { continue }
                             
                             returnedItem.append(Item(category_id: category_id, title: title, description: description, price: price, images_url: thumb, creation_date: creationDate, is_urgent: urgent))
+                            returnedItem.sort {
+                                $0.creation_date > $1.creation_date
+                            }
                         }
                     }
                     result = ItemListResponse.Success(item: returnedItem)
@@ -104,7 +107,7 @@ class ItemService {
                             
                             guard let category_name = categoryEntry?["name"] as? String else { continue }
                             
-                            returnedCategory.append(Category(id: category_id, name: category_name, color: UIColor()))
+                            returnedCategory.append(Category(id: category_id, name: category_name, color: UIColor.randomColor(seed: category_name)))
                         }
                     }
                     result = CategoryListResponse.Success(category: returnedCategory)

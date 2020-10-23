@@ -14,6 +14,7 @@ class ListItemsViewController: UITableViewController {
 
     private var viewModel = ListViewModel()
     var detailsCoordinator: DetailsItemCoordinator?
+    var filterCoordinator: FilterCoordinator?
 
     
     init(viewModel: ListViewModel ) {
@@ -26,11 +27,13 @@ class ListItemsViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        
-        initNavigationBar()
+        self.initNavigationBar()
         tableView.backgroundColor = UIColor.init(hex: "#EBEBEB")
+        tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
-        
+
+        viewModel.getCategory()
+
         viewModel.getItemList { loaded in
             if loaded {
                 DispatchQueue.main.async {
@@ -55,11 +58,6 @@ class ListItemsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsCoordinator = DetailsItemCoordinator(navigationController: self.navigationController!, item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
-        detailsCoordinator?.start()
-    }
-    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         let verticalPadding: CGFloat = 8
@@ -70,6 +68,16 @@ class ListItemsViewController: UITableViewController {
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: horizentalPadding/2, dy: verticalPadding/2)
         maskLayer.cornerRadius = 15
         cell.layer.mask = maskLayer
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        detailsCoordinator = DetailsItemCoordinator(navigationController: self.navigationController!, item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
+        detailsCoordinator?.start()
+    }
+    
+    @objc func didSelectFilter() {
+        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
+        filterCoordinator?.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -62,11 +62,13 @@ class ListItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
-        let verticalPadding: CGFloat = 5
+        let verticalPadding: CGFloat = 8
+        let horizentalPadding: CGFloat = 8
 
         let maskLayer = CALayer()
         maskLayer.backgroundColor = UIColor.white.cgColor
-        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: horizentalPadding/2, dy: verticalPadding/2)
+        maskLayer.cornerRadius = 15
         cell.layer.mask = maskLayer
     }
     

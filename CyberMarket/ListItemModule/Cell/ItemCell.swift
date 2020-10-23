@@ -25,8 +25,7 @@ class ItemCell: UITableViewCell {
             setupItemPriceLabel(price:  String(item!.price) + " €")
         }
     }
-    
-    
+   
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -43,14 +42,14 @@ class ItemCell: UITableViewCell {
         urgentImageView.layer.masksToBounds = true
         urgentImageView.isHidden = urgent
         addSubview(urgentImageView)
-        urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 35, height: 35, enableInsets: false)
+        urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 35, height: 35, enableInsets: false)
     }
     
     func setupCategoryView(id: Int){
         categoryView.backgroundColor = UIColor.randomColor(seed: String(id))
         addSubview(categoryView)
         
-        categoryView.anchor(top: self.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 0, enableInsets: true)
+        categoryView.anchor(top: self.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 15, height: 0, enableInsets: true)
     }
     
     func setupItemImage(imageUrl: String){
@@ -70,7 +69,7 @@ class ItemCell: UITableViewCell {
         itemTitleLabel.text = title
         addSubview(itemTitleLabel)
         
-        itemTitleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor , right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 30, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
+        itemTitleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor , right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 30, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
     }
     
     func setupItemCreatedDateLabel(date: Date){
@@ -81,7 +80,7 @@ class ItemCell: UITableViewCell {
         itemCreatedDateLabel.text = DateApp.stringWithLocalTime(fromDate: date, withFormat: .dateFormat)
         addSubview(itemCreatedDateLabel)
         
-        itemCreatedDateLabel.anchor(top: itemTitleLabel.bottomAnchor, left: self.leftAnchor, bottom: nil , right: nil, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
+        itemCreatedDateLabel.anchor(top: itemTitleLabel.bottomAnchor, left: self.leftAnchor, bottom: nil , right: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
     }
     
     func setupItemPriceLabel(price: String){
@@ -92,6 +91,7 @@ class ItemCell: UITableViewCell {
         itemPriceLabel.text = price
         addSubview(itemPriceLabel)
         
-        itemPriceLabel.anchor(top: itemTitleLabel.bottomAnchor, left: nil, bottom: nil, right: itemCreatedDateLabel.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 0, enableInsets: false)
+        itemPriceLabel.anchor(top: nil, left: nil, bottom: itemCreatedDateLabel.bottomAnchor, right: itemCreatedDateLabel.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 30, width: frame.size.width / 2, height: 0, enableInsets: false)
     }
+    
 }

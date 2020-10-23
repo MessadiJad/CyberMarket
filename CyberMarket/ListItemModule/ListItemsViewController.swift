@@ -13,6 +13,7 @@ class ListItemsViewController: UITableViewController {
     let cellReuseIdendifier = "itemCellId"
 
     private var viewModel = ListViewModel()
+    var detailsCoordinator: DetailsItemCoordinator?
 
     
     init(viewModel: ListViewModel ) {
@@ -55,10 +56,10 @@ class ListItemsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModel = DetailsItemViewModel()
-        let details = DetailsItemViewController(viewModel:viewModel)
-        navigationController!.show(details, sender: self)
+        detailsCoordinator = DetailsItemCoordinator(navigationController: self.navigationController!, item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
+        detailsCoordinator?.start()
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         let verticalPadding: CGFloat = 5
@@ -69,5 +70,9 @@ class ListItemsViewController: UITableViewController {
         cell.layer.mask = maskLayer
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+
+    }
 }
 

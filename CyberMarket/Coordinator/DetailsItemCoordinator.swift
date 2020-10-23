@@ -1,23 +1,13 @@
-
 import UIKit
-
-protocol ProfileFlowCoordinatorDelegate:class { }
 
 final class DetailsItemCoordinator: Coordinator {
 
     fileprivate let navigationController: UINavigationController
     fileprivate let detailsItemViewController: DetailsItemViewController
 
-    fileprivate var isDetailsItemViewController: Bool {
-        guard let isDetailsItemVC = navigationController.topViewController?.isKind(of: DetailsItemViewController.self) else { return false }
-        return isDetailsItemVC
-    }
-
-    weak var delegate: ProfileFlowCoordinatorDelegate?
-
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, item: Item, category: Category) {
         self.navigationController = navigationController
-        let viewModel = DetailsItemViewModel()
+        let viewModel = DetailsItemViewModel(item: item, categoryName: category)
         self.detailsItemViewController = DetailsItemViewController(viewModel: viewModel)
     }
 
@@ -26,16 +16,7 @@ final class DetailsItemCoordinator: Coordinator {
     }
 
     func start() {
-
-
-        self.navigationController.setViewControllers([self.detailsItemViewController], animated: false)
-
-
-
-    }
-
-    fileprivate func popViewController() {
-        navigationController.popViewController(animated: true)
+        self.navigationController.show(self.detailsItemViewController, sender: nil)
     }
 
 }

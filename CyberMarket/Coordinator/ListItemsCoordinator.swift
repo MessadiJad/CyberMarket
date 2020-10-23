@@ -1,7 +1,4 @@
-
 import UIKit
-
-
 
 final class ListItemsCoordinator: Coordinator {
 
@@ -21,8 +18,7 @@ final class ListItemsCoordinator: Coordinator {
     func start() {
         navigationController.show(listItemController, sender: self)
     }
-
-
+    
 }
 
 

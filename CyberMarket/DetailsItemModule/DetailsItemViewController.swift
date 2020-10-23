@@ -8,105 +8,116 @@
 import UIKit
 
 class DetailsItemViewController: UIViewController {
-
-    private var viewModel : DetailsItemViewModel
-
-    private let itemPriceLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
-        lbl.textAlignment = .right
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-
-    private let itemNameLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .black
-        lbl.font = UIFont.boldSystemFont(ofSize: 20)
-        lbl.textAlignment = .center
-        lbl.numberOfLines = 0
-        lbl.clipsToBounds = true
-        return lbl
-    }()
-
-    private let itemDateLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .darkGray
-        lbl.font = UIFont.systemFont(ofSize: 12)
-        lbl.textAlignment = .right
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-
-    private let itemDescriptionLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .black
-        lbl.font = UIFont.systemFont(ofSize: 16)
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-
-    private let itemImage : UIImageView = {
-        let imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFill
-        imgView.clipsToBounds = true
-        return imgView
-    }()
-
-    private let urgentImage : UIImageView = {
-        let imgView = UIImageView(image: UIImage(named:"urgent"))
-        imgView.contentMode = .scaleAspectFill
-        imgView.clipsToBounds = true
-        return imgView
-    }()
-
-    // MARK: - INIT
+    
+    var viewModel : DetailsItemViewModel
+    
+    let itemImageView = UIImageView()
+    let itemNameLabel = UILabel()
+    let itemDateLabel = UILabel()
+    let itemDescriptionTextView = UITextView()
+    let itemPriceButton = UIButton()
+    var urgentImageView = UIImageView()
+    var categoryViewIndicator = UIView()
+    
     init(viewModel: DetailsItemViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
-    // MARK: - UI SETUP
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(itemImage)
-        self.view.addSubview(urgentImage)
-        self.view.addSubview(itemNameLabel)
-        self.view.addSubview(itemDateLabel)
-        self.view.addSubview(itemPriceLabel)
-        self.view.addSubview(itemDescriptionLabel)
-
         self.view.backgroundColor = .white
-     
-        itemImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 300, enableInsets: true)
-        urgentImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft:0, paddingBottom: 0, paddingRight: 0, width: 200, height: 200, enableInsets: true)
-        itemNameLabel.anchor(top: itemImage.bottomAnchor, left: itemImage.leftAnchor, bottom: nil, right: itemImage.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        itemDateLabel.anchor(top: itemNameLabel.bottomAnchor, left: itemImage.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        itemPriceLabel.anchor(top: itemNameLabel.bottomAnchor, left: nil, bottom: nil, right:  itemImage.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        itemDescriptionLabel.anchor(top: itemPriceLabel.bottomAnchor, left: itemImage.leftAnchor, bottom: view.bottomAnchor, right:  itemImage.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+        self.title = viewModel.categoryName.name
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        self.navigationController?.navigationBar.tintColor = .black
+
         setupUI()
-
-   }
-
-    private func setupUI() {
-        self.title = "viewModel.category.name"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        self.navigationController?.navigationBar.tintColor = .white
-        itemNameLabel.text = "viewModel.title"
-        itemNameLabel.textColor = .white
-        itemDescriptionLabel.text = "viewModel.description"
-//        if let url =  viewModel.largeImageUrl {
-//            _ = itemImage.loadImageUsingCache(withUrl: url)
-//        }
-//        if let date =  viewModel.getCreationDate() {
-//            itemDateLabel.text = date
-//        }
-        itemPriceLabel.text = "viewModel.price)) €"
     }
+    
+    private func setupUI() {
+        setupImageItem(imageUrl: viewModel.thumbImageUrl!)
+        setupItemNameLabel(name: viewModel.title)
+        setupItemDateLabel(date: DateApp.stringWithLocalTime(fromDate: viewModel.creation_date!, withFormat: .dateFormat) )
+        setupItemDiscriptionTextView(description: viewModel.description)
+        setupItemPriceView(price: "  \(String(viewModel.price)) €")
+        setupUrgentIndicator(urgent: viewModel.isUrgent)
+        setupCategoryViewIndicator(color: UIColor.red)
+    }
+    
+    func setupImageItem(imageUrl: String) {
+        itemImageView.contentMode = .scaleToFill
+        itemImageView.downloaded(from: imageUrl)
+        itemImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(itemImageView)
+        
+        itemImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
+    }
+    
+    func setupItemNameLabel(name: String){
+        itemNameLabel.textColor = .black
+        itemNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        itemNameLabel.textAlignment = .left
+        itemNameLabel.numberOfLines = 0
+        itemNameLabel.clipsToBounds = true
+        itemNameLabel.text = name
+        self.view.addSubview(itemNameLabel)
+        
+        itemNameLabel.anchor(top: itemImageView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+    }
+    
+    func setupItemDateLabel(date: String) {
+        itemDateLabel.textColor = .darkGray
+        itemDateLabel.font = UIFont.systemFont(ofSize: 13)
+        itemDateLabel.textAlignment = .left
+        itemDateLabel.numberOfLines = 0
+        itemDateLabel.text = date
+        self.view.addSubview(itemDateLabel)
+        
+        itemDateLabel.anchor(top: itemNameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+    }
+    
+    func setupItemDiscriptionTextView(description: String) {
+        itemDescriptionTextView.textColor = .black
+        itemDescriptionTextView.font = UIFont.systemFont(ofSize: 15)
+        itemDescriptionTextView.textAlignment = .justified
+        itemDescriptionTextView.text = description
+        itemDescriptionTextView.isSelectable = false
+        itemDescriptionTextView.isEditable = false
+        self.view.addSubview(itemDescriptionTextView)
+        
+        itemDescriptionTextView.anchor(top: itemDateLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0, enableInsets: true)
+    }
+    
+    func setupItemPriceView(price: String) {
+        itemPriceButton.backgroundColor = UIColor.red
+        itemPriceButton.setTitle(price, for: .normal)
+        itemPriceButton.setTitleColor(UIColor.white, for: .normal)
+        itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)
+        itemPriceButton.tintColor = UIColor.white
+        self.view.addSubview(itemPriceButton)
+        
+        itemPriceButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 70, enableInsets: true)
+    }
+    
+    func setupUrgentIndicator(urgent: Bool) {
+        urgentImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
+        urgentImageView.tintColor = UIColor.red
+        urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        urgentImageView.layer.masksToBounds = true
+        let rightBarButton = UIBarButtonItem(customView: urgentImageView)
+        if urgent { self.navigationItem.rightBarButtonItem = rightBarButton }
+    }
+    
+    func setupCategoryViewIndicator(color: UIColor) {
+        categoryViewIndicator.backgroundColor = color
+        self.view.addSubview(categoryViewIndicator)
+        
+        categoryViewIndicator.anchor(top: itemImageView.bottomAnchor, left: view.leftAnchor, bottom: itemDateLabel.bottomAnchor, right:  nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 0, enableInsets: true)
+    }
+    
 }

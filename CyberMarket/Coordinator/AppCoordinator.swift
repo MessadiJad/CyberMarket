@@ -1,4 +1,3 @@
-
 import UIKit
 
 class Coordinator { }
@@ -17,15 +16,10 @@ final class AppCoordinator {
     }
 
     func start() {
-    
         let listItemsCoordinator = ListItemsCoordinator(navigationController: navigationController)
-        
         listItemsCoordinator.start()
-        childCoordinators.append(listItemsCoordinator)
-    
+        childCoordinators.append(listItemsCoordinator)    
     }
 
- 
-   
 }
 

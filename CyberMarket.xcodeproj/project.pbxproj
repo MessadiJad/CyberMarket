@@ -133,15 +133,15 @@
 		E11087912540854C00BF38F0 /* CyberMarket */ = {
 			isa = PBXGroup;
 			children = (
+				E11087922540854C00BF38F0 /* AppDelegate.swift */,
+				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
+				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E1C2301025420A1F0052AC17 /* DetailsItemModule */,
 				E1C22FF42541E4AD0052AC17 /* Coordinator */,
 				E1C22FEE2541D8AF0052AC17 /* Model */,
 				E1C22FCE254170960052AC17 /* Utility */,
-				E11087922540854C00BF38F0 /* AppDelegate.swift */,
-				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
 				E15D04B32540A38A008DC516 /* Networking */,
 				E11087FC2540927D00BF38F0 /* Constants */,
-				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E110879E2540854F00BF38F0 /* Assets.xcassets */,
 				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
 				E11087A32540854F00BF38F0 /* Info.plist */,

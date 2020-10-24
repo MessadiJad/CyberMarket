@@ -36,6 +36,8 @@
 		E1C2303325422FE20052AC17 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2303125422FE20052AC17 /* AppCoordinator.swift */; };
 		E1C230A6254236400052AC17 /* DetailsItemCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */; };
 		E1D73DCF25440E44003E8ADA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */; };
+		E1DDF0B22544A1AD00DB1F41 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */; };
+		E1DDF0C32544B8CE00DB1F41 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DDF0C22544B8CE00DB1F41 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		E1C2303125422FE20052AC17 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsItemCoordinator.swift; sourceTree = "<group>"; };
 		E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
+		E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		E1DDF0C22544B8CE00DB1F41 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,15 +145,15 @@
 		E11087912540854C00BF38F0 /* CyberMarket */ = {
 			isa = PBXGroup;
 			children = (
-				E198830B25435B5B001F8B55 /* Filter */,
 				E11087922540854C00BF38F0 /* AppDelegate.swift */,
 				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
+				E198830B25435B5B001F8B55 /* Filter */,
 				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E1C2301025420A1F0052AC17 /* DetailsItemModule */,
 				E1C22FF42541E4AD0052AC17 /* Coordinator */,
 				E1C22FEE2541D8AF0052AC17 /* Model */,
 				E15D04B32540A38A008DC516 /* Networking */,
-				E11087FC2540927D00BF38F0 /* Constants */,
+				E11087FC2540927D00BF38F0 /* Constants+Utils */,
 				E110879E2540854F00BF38F0 /* Assets.xcassets */,
 				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
 				E11087A32540854F00BF38F0 /* Info.plist */,
@@ -195,7 +199,7 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		E11087FC2540927D00BF38F0 /* Constants */ = {
+		E11087FC2540927D00BF38F0 /* Constants+Utils */ = {
 			isa = PBXGroup;
 			children = (
 				E1C22FE62541BD830052AC17 /* DateGeneric.swift */,
@@ -203,13 +207,15 @@
 				E11087FD254092BD00BF38F0 /* Environment.swift */,
 				E15D04AE25409C44008DC516 /* Extension.swift */,
 				E1C22FD425417B740052AC17 /* AppConstants.swift */,
+				E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */,
 			);
-			path = Constants;
+			path = "Constants+Utils";
 			sourceTree = "<group>";
 		};
 		E15D04B32540A38A008DC516 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E1DDF0C22544B8CE00DB1F41 /* Reachability.swift */,
 				E15D04C32540AAF1008DC516 /* ItemService.swift */,
 			);
 			path = Networking;
@@ -389,6 +395,7 @@
 				E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */,
 				E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */,
 				E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */,
+				E1DDF0C32544B8CE00DB1F41 /* Reachability.swift in Sources */,
 				E1C2301225420A540052AC17 /* DetailsItemViewController.swift in Sources */,
 				E11087F825408EB200BF38F0 /* Item.swift in Sources */,
 				E1C22FE22541BD190052AC17 /* Colors+Extension.swift in Sources */,
@@ -408,6 +415,7 @@
 				E11087952540854C00BF38F0 /* SceneDelegate.swift in Sources */,
 				E1C230A6254236400052AC17 /* DetailsItemCoordinator.swift in Sources */,
 				E11087FE254092BD00BF38F0 /* Environment.swift in Sources */,
+				E1DDF0B22544A1AD00DB1F41 /* SpinnerView.swift in Sources */,
 				E1A328F7254375A000178177 /* TagViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

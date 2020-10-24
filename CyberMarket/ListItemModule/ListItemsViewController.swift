@@ -15,7 +15,7 @@ class ListItemsViewController: UITableViewController {
     private var viewModel = ListViewModel()
     var detailsCoordinator: DetailsItemCoordinator?
     var filterCoordinator: FilterCoordinator?
-
+    let spinnerView = SpinnerView()
     
     init(viewModel: ListViewModel ) {
         self.viewModel = viewModel
@@ -25,8 +25,11 @@ class ListItemsViewController: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
+
+        spinnerView.show(uiView: self.view)
+        
         self.initNavigationBar()
         tableView.backgroundColor = UIColor.init(hex: "#EBEBEB")
         tableView.tableFooterView = UIView()
@@ -37,12 +40,14 @@ class ListItemsViewController: UITableViewController {
         viewModel.getItemList { loaded in
             if loaded {
                 DispatchQueue.main.async { [self] in
+                    spinnerView.hide()
                     self.tableView.reloadData()
                 }
             }
         }
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tableView.reloadData()

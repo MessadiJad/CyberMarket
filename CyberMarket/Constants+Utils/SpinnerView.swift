@@ -4,6 +4,7 @@ class SpinnerView {
     var spinner = UIActivityIndicatorView(style: .white)
     var uiView = UIView()
     var containerView = UIView()
+    var retryButton = UIButton()
     var currentWindow: UIWindow?
 
     func setup(uiView: UIView){
@@ -19,6 +20,19 @@ class SpinnerView {
         spinner.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
+        currentWindow!.addSubview(retryButton)
+
+        retryButton.backgroundColor = .clear
+        retryButton.setTitle("Réessayer", for: .normal)
+        retryButton.layer.borderWidth = 1
+        retryButton.layer.borderColor = UIColor.white.cgColor
+        retryButton.setTitleColor(UIColor.white, for: .normal)
+        retryButton.setTitleColor(UIColor.black, for: .highlighted)
+
+        retryButton.layer.cornerRadius = 20
+        retryButton.anchor(top: nil, left: nil, bottom: currentWindow?.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 0, width: 100, height: 40, enableInsets: false)
+        retryButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+
     }
 
     func show(uiView: UIView) {

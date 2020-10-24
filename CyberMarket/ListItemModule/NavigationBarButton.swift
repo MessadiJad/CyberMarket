@@ -12,17 +12,17 @@ extension ListItemsViewController{
     
     func initNavigationBar() {
         self.title = AppName
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        filterButton = UIButton(type: UIButton.ButtonType.custom)
         if #available(iOS 13.0, *) {
-            button.setImage(UIImage(systemName: "arrow.up.arrow.down"), for: .normal)
+            filterButton.setImage(UIImage(systemName: "arrow.up.arrow.down"), for: .normal)
         } else {
-            button.setImage(UIImage(named: "filter-icon"), for: .normal)
+            filterButton.setImage(UIImage(named: "filter-icon"), for: .normal)
         }
-        button.addTarget(self, action:  #selector(didSelectFilter), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-        button.tintColor = UIColor.black
+        filterButton.addTarget(self, action:  #selector(didSelectFilter), for: UIControl.Event.touchUpInside)
+        filterButton.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        filterButton.tintColor = UIColor.black
 
-        let barButton = UIBarButtonItem(customView: button)
+        let barButton = UIBarButtonItem(customView: filterButton)
         self.navigationItem.rightBarButtonItem = barButton
     }
     

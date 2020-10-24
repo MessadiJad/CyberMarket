@@ -88,7 +88,7 @@ class DetailsItemViewController: UIViewController {
         itemDescriptionTextView.isEditable = false
         self.view.addSubview(itemDescriptionTextView)
         
-        itemDescriptionTextView.anchor(top: itemDateLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0, enableInsets: true)
+        itemDescriptionTextView.anchor(top: itemDateLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 70, paddingRight: 10, width: 0, height: 0, enableInsets: true)
     }
     
     func setupItemPriceView(price: String) {

@@ -16,6 +16,7 @@ class ListItemsViewController: UITableViewController {
     var detailsCoordinator: DetailsItemCoordinator?
     var filterCoordinator: FilterCoordinator?
     let spinnerView = SpinnerView()
+    var filterButton = UIButton()
     
     init(viewModel: ListViewModel ) {
         self.viewModel = viewModel
@@ -54,6 +55,9 @@ class ListItemsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (viewModel.filteredItems.count == 0) {
+            filterButton.isEnabled = false
+        }else{ filterButton.isEnabled = true }
         return viewModel.filteredItems.count
         
     }

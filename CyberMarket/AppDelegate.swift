@@ -68,12 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Reachability.isConnectedToNetwork(){
             print("Internet Connection Available!")
         }else{
-            print("Internet Connection not Available!")
             let controller = UIAlertController(title: "No Internet connection", message: "CyberMarket requires an Internet connection", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-
             controller.addAction(ok)
-
             window?.rootViewController!.present(controller, animated: true, completion: nil)
         }
        

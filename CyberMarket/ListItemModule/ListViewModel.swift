@@ -7,10 +7,11 @@
 
 import UIKit
 
-class ListViewModel {
-    
+class ListViewModel: FilterViewControllerDelegate {
+
     var items = [Item]()
     var categorys = [Category]()
+    var filteredItems = [Item]()
 
     typealias CompletionHandler = (_ success:Bool) -> Void
     var competion: Bool = false
@@ -22,6 +23,8 @@ class ListViewModel {
                 print("Error fetching items: \(error)")
             case .Success(let returnedItem):
                 self.items = returnedItem
+                self.filteredItems = self.items
+                UserDefaults.standard.removeObject(forKey: "category_id")
                 completionHandler(true)
             }
         }
@@ -36,5 +39,13 @@ class ListViewModel {
             self.categorys = returnedCategory
             }
         }
+    }
+    
+    func filterd(_ controller: FilterViewController, category_id: Int?, active: Bool) {
+        if (active){
+            let filtered = self.items.filter { $0.category_id == category_id }
+            self.filteredItems = filtered
+        } else {self.filteredItems = items }
+       
     }
 }

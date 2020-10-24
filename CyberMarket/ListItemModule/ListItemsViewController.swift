@@ -36,15 +36,20 @@ class ListItemsViewController: UITableViewController {
 
         viewModel.getItemList { loaded in
             if loaded {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [self] in
                     self.tableView.reloadData()
                 }
             }
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.count
+        return viewModel.filteredItems.count
         
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +59,7 @@ class ListItemsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ItemCell
-        cell.item = viewModel.items[indexPath.row]
+        cell.item = viewModel.filteredItems[indexPath.row]
         return cell
     }
     
@@ -77,6 +82,7 @@ class ListItemsViewController: UITableViewController {
     
     @objc func didSelectFilter() {
         filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
+        filterCoordinator?.filterViewController.delegate =  self.viewModel
         filterCoordinator?.start()
     }
     

@@ -1,8 +1,16 @@
 import UIKit
 
+protocol FilterViewControllerDelegate:class {
+    func filterd(_ controller: FilterViewController, category_id: Int?, active: Bool)
+}
+
 class FilterViewController: UICollectionViewController {
+    weak var delegate: FilterViewControllerDelegate?
+    var currentIndexPath : IndexPath?
+
     private var viewModel : FilterViewModel
     let applyFilterButton = UIButton()
+    var resettBarButtonItem = UIBarButtonItem()
     let layout = TagFlowLayout()
     
     let reuseIdentifier = "cell"
@@ -23,8 +31,9 @@ class FilterViewController: UICollectionViewController {
         cancelBarButtonItem.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem  = cancelBarButtonItem
         
-        let resettBarButtonItem = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetFilter))
+        resettBarButtonItem = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetFilter))
         resettBarButtonItem.tintColor = UIColor.black
+        resettBarButtonItem.isEnabled = false
         self.navigationItem.leftBarButtonItem  = resettBarButtonItem
         setupApplyFilterButton()
         collectionView.register(TagViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -33,8 +42,23 @@ class FilterViewController: UICollectionViewController {
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         collectionView.collectionViewLayout = layout
         collectionView.allowsMultipleSelection = false
+        self.applyFilterButton.isEnabled = false
+        self.applyFilterButton.backgroundColor = UIColor.lightGray
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+        DispatchQueue.main.async { [self] in
+            let savedCategoyId = UserDefaults.standard.integer(forKey: "category_id")
+            if savedCategoyId != Int() {
+                let indexPath = NSIndexPath(row: savedCategoyId - 1 , section: 0)
+                    self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+                resettBarButtonItem.isEnabled = true
+            }
+     
+        }
+    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.categorys.count
     }
@@ -43,17 +67,24 @@ class FilterViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! TagViewCell
         cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
+    
         return cell
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.item)!")
+        self.applyFilterButton.isEnabled = true
+        self.applyFilterButton.backgroundColor = UIColor.black
+        resettBarButtonItem.isEnabled = true
+        currentIndexPath = indexPath
+        
     }
     
     func setupApplyFilterButton() {
         applyFilterButton.backgroundColor = UIColor.black
         applyFilterButton.setTitle("Appliquer", for: .normal)
         applyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        applyFilterButton.addTarget(self, action:  #selector(applyFilter), for: .touchUpInside)
         applyFilterButton.tintColor = UIColor.white
         self.view.addSubview(applyFilterButton)
         
@@ -65,5 +96,19 @@ class FilterViewController: UICollectionViewController {
     }
     
     @objc func resetFilter() {
+        self.applyFilterButton.isEnabled = false
+        self.applyFilterButton.backgroundColor = UIColor.lightGray
+        resettBarButtonItem.isEnabled = false
+        self.collectionView.deselectAllItems(animated: true)
+        UserDefaults.standard.removeObject(forKey: "category_id")
+        delegate?.filterd(self, category_id: nil, active: false)
     }
+    
+    @objc func applyFilter(sender:UIButton){
+        let category_id = viewModel.categorys[currentIndexPath!.row].id
+        delegate?.filterd(self, category_id: category_id, active: true)
+        UserDefaults.standard.set(category_id, forKey: "category_id")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

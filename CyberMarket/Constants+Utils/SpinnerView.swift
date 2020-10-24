@@ -47,6 +47,7 @@ class SpinnerView {
         containerView.isHidden = true
         containerView.removeFromSuperview()
         spinner.removeFromSuperview()
+        retryButton.removeFromSuperview()
     }
     
     func isHidden() -> Bool{

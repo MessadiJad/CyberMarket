@@ -35,6 +35,7 @@
 		E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2303025422FE10052AC17 /* ListItemsCoordinator.swift */; };
 		E1C2303325422FE20052AC17 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2303125422FE20052AC17 /* AppCoordinator.swift */; };
 		E1C230A6254236400052AC17 /* DetailsItemCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */; };
+		E1D73DCF25440E44003E8ADA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E1C2303025422FE10052AC17 /* ListItemsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemsCoordinator.swift; sourceTree = "<group>"; };
 		E1C2303125422FE20052AC17 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E1C230A5254236400052AC17 /* DetailsItemCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsItemCoordinator.swift; sourceTree = "<group>"; };
+		E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		E198830B25435B5B001F8B55 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */,
 				E198830C25435B70001F8B55 /* FilterViewController.swift */,
 				E198831625435C84001F8B55 /* FilterViewModel.swift */,
 				E1A328F6254375A000178177 /* TagViewCell.swift */,
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E198831225435C02001F8B55 /* FilterCoordinator.swift in Sources */,
+				E1D73DCF25440E44003E8ADA /* TagFlowLayout.swift in Sources */,
 				E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */,
 				E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */,
 				E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */,

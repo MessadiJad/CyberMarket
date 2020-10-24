@@ -3,11 +3,13 @@ import UIKit
 class FilterViewController: UICollectionViewController {
     private var viewModel : FilterViewModel
     let applyFilterButton = UIButton()
+    let layout = TagFlowLayout()
+    
     let reuseIdentifier = "cell"
     
     init(viewModel: FilterViewModel ) {
         self.viewModel = viewModel
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(collectionViewLayout: TagFlowLayout())
     }
     
     required init?(coder: NSCoder) {
@@ -26,15 +28,13 @@ class FilterViewController: UICollectionViewController {
         self.navigationItem.leftBarButtonItem  = resettBarButtonItem
         setupApplyFilterButton()
         collectionView.register(TagViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-               flowLayout.estimatedItemSize = CGSize(width: 1, height:1)
-           }
+        
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.estimatedItemSize = CGSize(width: 140, height: 40)
+        collectionView.collectionViewLayout = layout
+        collectionView.allowsMultipleSelection = false
     }
-   
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
-    {
-        return UIEdgeInsets(top: 20, left: 8, bottom: 5, right: 8)
-    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.categorys.count
     }
@@ -43,13 +43,11 @@ class FilterViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! TagViewCell
         cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
-        cell.sizeToFit()
-        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         print("You selected cell #\(indexPath.item)!")
+        print("You selected cell #\(indexPath.item)!")
     }
     
     func setupApplyFilterButton() {

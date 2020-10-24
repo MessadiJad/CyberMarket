@@ -1,7 +1,7 @@
 import UIKit
 
 class SpinnerView {
-    var spinner = UIActivityIndicatorView(style: .large)
+    var spinner = UIActivityIndicatorView(style: .white)
     var uiView = UIView()
     var containerView = UIView()
     var currentWindow: UIWindow?

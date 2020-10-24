@@ -95,7 +95,11 @@ class DetailsItemViewController: UIViewController {
         itemPriceButton.backgroundColor = viewModel.categoryName.color
         itemPriceButton.setTitle(price, for: .normal)
         itemPriceButton.setTitleColor(UIColor.white, for: .normal)
-        itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)
+        if #available(iOS 13.0, *) {
+            itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)
+        } else {
+            itemPriceButton.setImage(UIImage(named: "cart-icon")?.withRenderingMode(.alwaysTemplate) , for: .normal)
+        }
         itemPriceButton.tintColor = UIColor.white
         self.view.addSubview(itemPriceButton)
         
@@ -104,10 +108,13 @@ class DetailsItemViewController: UIViewController {
     
     func setupUrgentIndicator(urgent: Bool) {
         urgentImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13.0, *) {
+            urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
+        }
         urgentImageView.tintColor = UIColor.red
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        urgentImageView.layer.masksToBounds = true
         let rightBarButton = UIBarButtonItem(customView: urgentImageView)
         if urgent { self.navigationItem.rightBarButtonItem = rightBarButton }
     }

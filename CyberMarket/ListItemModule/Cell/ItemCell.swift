@@ -41,7 +41,11 @@ class ItemCell: UITableViewCell {
     }
     
     func setupUrgentIcon(urgent: Bool){
-        urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13.0, *) {
+            urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
+        }
         urgentImageView.tintColor = UIColor.red
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         urgentImageView.layer.masksToBounds = true

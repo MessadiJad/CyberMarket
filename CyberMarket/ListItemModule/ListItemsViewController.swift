@@ -35,7 +35,19 @@ class ListItemsViewController: UITableViewController {
         tableView.backgroundColor = UIColor.init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
+        fetchData()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: Notification.Name("RetryServiceNotificationIdentifier"), object: nil)
+
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
+    }
+    
+    @objc func fetchData()  {
         viewModel.getCategory()
         
         viewModel.getItemList { loaded in
@@ -48,10 +60,7 @@ class ListItemsViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.tableView.reloadData()
-    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (viewModel.filteredItems.count == 0) {

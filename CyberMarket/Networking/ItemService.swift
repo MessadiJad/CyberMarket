@@ -74,6 +74,8 @@ class ItemService {
                     result = ItemListResponse.Success(item: returnedItem)
                 } catch let error as NSError {
                     result = ItemListResponse.Failure(error: error)
+                    NotificationCenter.default.post(name: Notification.Name("ShowRetryButtonNotificationIdentifier"), object: nil)
+
                 }
             } else {
                 result = ItemListResponse.Success(item: [Item]())

@@ -8,12 +8,15 @@ class SpinnerView {
     var currentWindow: UIWindow?
 
     func setup(uiView: UIView){
-        
+    
         if let currentWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
             currentWindow.addSubview(containerView)
-            currentWindow.addSubview(retryButton)
-            retryButton.anchor(top: nil, left: nil, bottom: currentWindow.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 0, width: 100, height: 40, enableInsets: false)
+            if !Reachability.isConnectedToNetwork() {
+                currentWindow.addSubview(retryButton)
+                retryButton.anchor(top: nil, left: nil, bottom: currentWindow.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 0, width: 100, height: 40, enableInsets: false)
+                retryButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
+            }
         }
         
         containerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
@@ -28,12 +31,12 @@ class SpinnerView {
         
 
         retryButton.create("Réessayer", titleColor: .white, backgroundColor: .clear)
+        retryButton.addTarget(self, action:  #selector(postRetryService), for: UIControl.Event.touchUpInside)
         retryButton.layer.borderWidth = 1
         retryButton.layer.borderColor = UIColor.white.cgColor
         retryButton.setTitleColor(UIColor.black, for: .highlighted)
 
         retryButton.layer.cornerRadius = 20
-        retryButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 
     }
 
@@ -59,5 +62,9 @@ class SpinnerView {
         else{
             return true
         }
+    }
+    
+    @objc func postRetryService() {
+        NotificationCenter.default.post(name: Notification.Name("RetryServiceNotificationIdentifier"), object: nil)
     }
 }

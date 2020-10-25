@@ -68,6 +68,8 @@ class ListItemsViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ItemCell
         cell.item = viewModel.filteredItems[indexPath.row]
+        let list_category_id = viewModel.filteredItems[indexPath.row].category_id
+        cell.category = viewModel.categorys[list_category_id! - 1]
         return cell
     }
     
@@ -89,9 +91,10 @@ class ListItemsViewController: UITableViewController {
     }
     
     @objc func didSelectFilter() {
-        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
-        filterCoordinator?.filterViewController.delegate =  self.viewModel
-        filterCoordinator?.start()
+//        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
+//        filterCoordinator?.filterViewController.delegate =  self.viewModel
+//        filterCoordinator?.start()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

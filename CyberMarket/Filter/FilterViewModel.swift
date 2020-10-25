@@ -9,7 +9,9 @@ import Foundation
 
 class FilterViewModel {
     var categorys = [Category]()
-    
+    var sortTitle = ["Les plus recents","Les plus anciens","Les plus urgents"]
+    var sortId = [12,13,14]
+
     init(categorys : [Category]) {
         self.categorys = categorys
     }

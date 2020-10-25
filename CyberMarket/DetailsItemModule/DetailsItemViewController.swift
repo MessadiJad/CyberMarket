@@ -10,11 +10,11 @@ import UIKit
 class DetailsItemViewController: UIViewController {
     
     var viewModel : DetailsItemViewModel
-    
+    var scrollView = UIScrollView()
     let itemImageView = UIImageView()
     let itemNameLabel = UILabel()
     let itemDateLabel = UILabel()
-    let itemDescriptionTextView = UITextView()
+    let itemDescriptionLabel = UILabel()
     let itemPriceButton = UIButton()
     var urgentImageView = UIImageView()
     var categoryViewIndicator = UIView()
@@ -38,22 +38,29 @@ class DetailsItemViewController: UIViewController {
     }
     
     private func setupUI() {
+        setupScrollView()
         setupImageItem(imageUrl: viewModel.thumbImageUrl!)
         setupItemNameLabel(name: viewModel.title)
         setupItemDateLabel(date: DateApp.stringWithLocalTime(fromDate: viewModel.creation_date!, withFormat: .dateFormat) )
-        setupItemDiscriptionTextView(description: viewModel.description)
+        setupItemDiscriptionLabel(description: viewModel.description)
         setupItemPriceView(price: "  \(String(viewModel.price)) €")
         setupUrgentIndicator(urgent: viewModel.isUrgent)
         setupCategoryViewIndicator(color: viewModel.categoryName.color)
     }
     
+    func setupScrollView(){
+        view.addSubview(scrollView)
+        scrollView.backgroundColor = .white
+        scrollView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+    }
+    
     func setupImageItem(imageUrl: String) {
-        itemImageView.contentMode = .scaleToFill
+        itemImageView.contentMode = .scaleAspectFill
+        itemImageView.clipsToBounds = true
         itemImageView.downloaded(from: imageUrl)
-        itemImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(itemImageView)
+        scrollView.addSubview(itemImageView)
         
-        itemImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
+        itemImageView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
     }
     
     func setupItemNameLabel(name: String){
@@ -63,32 +70,33 @@ class DetailsItemViewController: UIViewController {
         itemNameLabel.numberOfLines = 0
         itemNameLabel.clipsToBounds = true
         itemNameLabel.text = name
-        self.view.addSubview(itemNameLabel)
+        scrollView.addSubview(itemNameLabel)
         
-        itemNameLabel.anchor(top: itemImageView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+        itemNameLabel.anchor(top: itemImageView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
     }
     
     func setupItemDateLabel(date: String) {
         itemDateLabel.textColor = .darkGray
         itemDateLabel.font = UIFont.systemFont(ofSize: 13)
         itemDateLabel.textAlignment = .left
-        itemDateLabel.numberOfLines = 0
+        itemDateLabel.numberOfLines = 10
         itemDateLabel.text = date
-        self.view.addSubview(itemDateLabel)
+        scrollView.addSubview(itemDateLabel)
         
-        itemDateLabel.anchor(top: itemNameLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+        itemDateLabel.anchor(top: itemNameLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
     }
     
-    func setupItemDiscriptionTextView(description: String) {
-        itemDescriptionTextView.textColor = .black
-        itemDescriptionTextView.font = UIFont.systemFont(ofSize: 15)
-        itemDescriptionTextView.textAlignment = .justified
-        itemDescriptionTextView.text = description
-        itemDescriptionTextView.isSelectable = false
-        itemDescriptionTextView.isEditable = false
-        self.view.addSubview(itemDescriptionTextView)
+    func setupItemDiscriptionLabel(description: String) {
+        scrollView.addSubview(itemDescriptionLabel)
+
+        itemDescriptionLabel.textColor = .black
+        itemDescriptionLabel.font = UIFont.systemFont(ofSize: 17)
+        itemDescriptionLabel.numberOfLines = 0
+        itemDescriptionLabel.textAlignment = .left
+        itemDescriptionLabel.text = description
         
-        itemDescriptionTextView.anchor(top: itemDateLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 70, paddingRight: 10, width: 0, height: 0, enableInsets: true)
+        itemDescriptionLabel.anchor(top: itemDateLabel.bottomAnchor, left: itemImageView.leftAnchor, bottom: scrollView.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom:80, paddingRight: 10, width: 0, height: 0, enableInsets: true)
+        
     }
     
     func setupItemPriceView(price: String) {
@@ -121,9 +129,9 @@ class DetailsItemViewController: UIViewController {
     
     func setupCategoryViewIndicator(color: UIColor) {
         categoryViewIndicator.backgroundColor = color
-        self.view.addSubview(categoryViewIndicator)
+        scrollView.addSubview(categoryViewIndicator)
         
-        categoryViewIndicator.anchor(top: itemImageView.bottomAnchor, left: view.leftAnchor, bottom: itemDateLabel.bottomAnchor, right:  nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 0, enableInsets: true)
+        categoryViewIndicator.anchor(top: itemImageView.bottomAnchor, left: scrollView.leftAnchor, bottom: itemDateLabel.bottomAnchor, right:  nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 0, enableInsets: true)
     }
     
 }

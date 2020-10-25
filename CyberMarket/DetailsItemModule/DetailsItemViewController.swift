@@ -72,7 +72,7 @@ class DetailsItemViewController: UIViewController {
         itemNameLabel.text = name
         scrollView.addSubview(itemNameLabel)
         
-        itemNameLabel.anchor(top: itemImageView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+        itemNameLabel.anchor(top: itemImageView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
     }
     
     func setupItemDateLabel(date: String) {

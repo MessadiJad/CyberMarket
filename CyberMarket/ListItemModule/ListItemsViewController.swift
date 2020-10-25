@@ -32,7 +32,7 @@ class ListItemsViewController: UITableViewController {
         spinnerView.show(uiView: self.view)
         
         self.initNavigationBar()
-        tableView.backgroundColor = UIColor.init(hex: "#EBEBEB")
+        tableView.backgroundColor = UIColor.init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
 
@@ -68,8 +68,10 @@ class ListItemsViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ItemCell
         cell.item = viewModel.filteredItems[indexPath.row]
-        let list_category_id = viewModel.filteredItems[indexPath.row].category_id
-        cell.category = viewModel.categorys[list_category_id! - 1]
+        if let list_category_id = viewModel.filteredItems[indexPath.row].category_id {
+            cell.category = viewModel.categorys[list_category_id - 1]
+        }
+     
         return cell
     }
     

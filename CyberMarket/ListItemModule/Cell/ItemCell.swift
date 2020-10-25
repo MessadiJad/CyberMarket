@@ -18,6 +18,7 @@ class ItemCell: UITableViewCell {
     var category : Category? {
         didSet {
             setupCategoryView(color: category!.color)
+            itemPriceLabel.backgroundColor = category!.color
         }
     }
     
@@ -93,14 +94,14 @@ class ItemCell: UITableViewCell {
     }
     
     func setupItemPriceLabel(price: String){
-        itemPriceLabel.textColor = .black
-        itemPriceLabel.font = UIFont.systemFont(ofSize: 18)
-        itemPriceLabel.textAlignment = .right
+        itemPriceLabel.textColor = .white
+        itemPriceLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        itemPriceLabel.textAlignment = .center
         itemPriceLabel.numberOfLines = 0
         itemPriceLabel.text = price
         addSubview(itemPriceLabel)
         
-        itemPriceLabel.anchor(top: nil, left: nil, bottom: itemCreatedDateLabel.bottomAnchor, right: itemCreatedDateLabel.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 30, width: frame.size.width / 2, height: 0, enableInsets: false)
+        itemPriceLabel.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right:self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 35, enableInsets: false)
     }
     
 }

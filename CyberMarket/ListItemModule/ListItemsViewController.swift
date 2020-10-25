@@ -91,10 +91,9 @@ class ListItemsViewController: UITableViewController {
     }
     
     @objc func didSelectFilter() {
-//        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
-//        filterCoordinator?.filterViewController.delegate =  self.viewModel
-//        filterCoordinator?.start()
-        tableView.reloadData()
+        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
+        filterCoordinator?.filterViewController.delegate =  self.viewModel
+        filterCoordinator?.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

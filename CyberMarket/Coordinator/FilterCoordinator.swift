@@ -15,7 +15,7 @@ final class FilterCoordinator: Coordinator {
     init(navigationController: UINavigationController, categorys: [Category]) {
         self.navigationController = navigationController
         let viewModel = FilterViewModel(categorys: categorys)
-        self.filterViewController = FilterViewController(viewModel: viewModel)
+        self.filterViewController = FilterViewController(viewModel)
     }
 
     deinit {

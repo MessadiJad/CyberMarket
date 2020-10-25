@@ -11,7 +11,7 @@ import UIKit
 class ListItemsViewController: UITableViewController {
     
     let cellReuseIdendifier = "itemCellId"
-
+    
     private var viewModel = ListViewModel()
     var detailsCoordinator: DetailsItemCoordinator?
     var filterCoordinator: FilterCoordinator?
@@ -26,18 +26,18 @@ class ListItemsViewController: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
-
+        
         spinnerView.show(uiView: self.view)
         
         self.initNavigationBar()
         tableView.backgroundColor = UIColor.init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
-
+        
         viewModel.getCategory()
-
+        
         viewModel.getItemList { loaded in
             if loaded {
                 DispatchQueue.main.async { [self] in
@@ -66,20 +66,22 @@ class ListItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as! ItemCell
-        cell.item = viewModel.filteredItems[indexPath.row]
-        if let list_category_id = viewModel.filteredItems[indexPath.row].category_id {
-            cell.category = viewModel.categorys[list_category_id - 1]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as? ItemCell {
+            cell.item = viewModel.filteredItems[indexPath.row]
+            if let list_category_id = viewModel.filteredItems[indexPath.row].category_id {
+                cell.category = viewModel.categorys[list_category_id - 1]
+            }
+            
+            return cell
         }
-     
-        return cell
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         let verticalPadding: CGFloat = 8
         let horizentalPadding: CGFloat = 8
-
+        
         let maskLayer = CALayer()
         maskLayer.backgroundColor = UIColor.white.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: horizentalPadding/2, dy: verticalPadding/2)
@@ -88,19 +90,22 @@ class ListItemsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsCoordinator = DetailsItemCoordinator(navigationController: self.navigationController!, item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
-        detailsCoordinator?.start()
+        if let navigationController = self.navigationController {
+            detailsCoordinator = DetailsItemCoordinator(navigationController: navigationController , item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
+            detailsCoordinator?.start()
+        }
     }
     
     @objc func didSelectFilter() {
-        filterCoordinator = FilterCoordinator(navigationController: self.navigationController!, categorys: self.viewModel.categorys)
-        filterCoordinator?.filterViewController.delegate =  self.viewModel
-        filterCoordinator?.start()
+        if let navigationController = self.navigationController {
+            filterCoordinator = FilterCoordinator(navigationController: navigationController, categorys: self.viewModel.categorys)
+            filterCoordinator?.filterViewController.viewModel.delegate =  self.viewModel
+            filterCoordinator?.start()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-
     }
 }
 

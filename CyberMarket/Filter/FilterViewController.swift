@@ -1,21 +1,17 @@
 import UIKit
 
-protocol FilterViewControllerDelegate:class {
-    func filterd(_ controller: FilterViewController, category_id: Int?,sort_id:Int?, active: Bool)
-}
+
 
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    weak var delegate: FilterViewControllerDelegate?
-    var currentIndexPath : IndexPath?
-
-    private var viewModel : FilterViewModel
-    let applyFilterButton = UIButton()
-    var resettBarButtonItem = UIBarButtonItem()
-    let layout = TagFlowLayout()
+    
+    var viewModel : FilterViewModel
+    private let applyFilterButton = UIButton()
+    private var resettBarButtonItem = UIBarButtonItem()
+    private let layout = TagFlowLayout()
     
     let reuseIdentifier = "cell"
     
-    init(viewModel: FilterViewModel ) {
+    init(_ viewModel: FilterViewModel ) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: TagFlowLayout())
     }
@@ -25,8 +21,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func viewDidLoad() {
-        collectionView.backgroundColor = UIColor.white
         self.title = "Filtre"
+        collectionView.backgroundColor = UIColor.white
         let cancelBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(closeFilter))
         cancelBarButtonItem.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem  = cancelBarButtonItem
@@ -42,7 +38,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         collectionView.collectionViewLayout = layout
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-         layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: 30)
+        layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: 30)
         collectionView.allowsMultipleSelection = false
         self.applyFilterButton.isEnabled = false
         self.applyFilterButton.backgroundColor = UIColor.lightGray
@@ -52,13 +48,18 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         DispatchQueue.main.async { [self] in
-            let savedCategoyId = UserDefaults.standard.integer(forKey: "category_id")
-            if savedCategoyId != Int() {
-                let indexPath = NSIndexPath(row: savedCategoyId - 1 , section: 0)
-                    self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
-                resettBarButtonItem.isEnabled = true
+            
+            if viewModel.getSortId() != Int()  {
+                let indexPath = NSIndexPath(row: viewModel.getSortId() - 1 , section: 1)
+                self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
             }
-     
+            
+            if viewModel.getCategory() != Int() {
+                let indexPath = NSIndexPath(row: viewModel.getCategory() - 1 , section: 0)
+                self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+            }
+            resettBarButtonItem.isEnabled = true
+            
         }
     }
     
@@ -68,18 +69,20 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionHeader
-            switch indexPath.section {
-            case 0:
-                sectionHeader.label.text = "Categorie"
-            case 1:
-                sectionHeader.label.text = "Tri"
-            default:
-                break
+            if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader {
+                switch indexPath.section {
+                case 0:
+                    sectionHeader.label.text = "Categorie"
+                case 1:
+                    sectionHeader.label.text = "Tri"
+                default:
+                    break
+                }
+                return sectionHeader
             }
-             return sectionHeader
+            return UICollectionReusableView()
         } else { 
-             return UICollectionReusableView()
+            return UICollectionReusableView()
         }
     }
     
@@ -101,32 +104,29 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! TagViewCell
-        switch indexPath.section {
-        case 0:
-            cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
-        case 1:
-            cell.itemTitleLabel.text = self.viewModel.sortTitle[indexPath.row]
-        default:
-            break
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? TagViewCell {
+            switch indexPath.section {
+            case 0:
+                cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
+            case 1:
+                cell.itemTitleLabel.text = self.viewModel.sortTitle[indexPath.row]
+            default:
+                break
+            }
+            return cell
         }
-    
-        return cell
+        return UICollectionViewCell()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.applyFilterButton.isEnabled = true
         self.applyFilterButton.backgroundColor = UIColor.black
         resettBarButtonItem.isEnabled = true
-        
-        currentIndexPath = indexPath
-        
+        viewModel.currentIndexPath = indexPath
     }
     
     func setupApplyFilterButton() {
-        applyFilterButton.backgroundColor = UIColor.black
-        applyFilterButton.setTitle("Appliquer", for: .normal)
-        applyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        applyFilterButton.create("Appliquer", titleColor: .white, backgroundColor: .black)
         applyFilterButton.addTarget(self, action:  #selector(applyFilter), for: .touchUpInside)
         applyFilterButton.tintColor = UIColor.white
         self.view.addSubview(applyFilterButton)
@@ -143,18 +143,26 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         self.applyFilterButton.backgroundColor = UIColor.lightGray
         resettBarButtonItem.isEnabled = false
         self.collectionView.deselectAllItems(animated: true)
-        UserDefaults.standard.removeObject(forKey: "category_id")
-        delegate?.filterd(self, category_id: nil, sort_id: nil, active: false)
+        self.viewModel.resetFilter()
+        self.viewModel.filter(controller: self, category_id: nil, sort_id: nil, active: false)
+        
     }
     
     @objc func applyFilter(sender:UIButton){
-        let category_id = viewModel.categorys[currentIndexPath!.row].id
-        let sort_id = viewModel.sortId[currentIndexPath!.row]
-
-        delegate?.filterd(self, category_id: category_id, sort_id: sort_id , active: true)
-        let saveLastChoose = category_id! + sort_id
-        UserDefaults.standard.set(saveLastChoose, forKey: "category_id")
+        guard let indexPath = viewModel.currentIndexPath else { return }
+        
+        if (indexPath.section == 0) {
+            viewModel.removeSortId()
+            viewModel.category_id = viewModel.categorys[indexPath.row].id
+            viewModel.saveCategory(id: viewModel.category_id)
+        }else {
+            viewModel.removeCategoryId()
+            viewModel.sort_id = viewModel.sortId[indexPath.row]
+            viewModel.saveSortId(id: indexPath.row + 1)
+        }
+        self.viewModel.filter(controller: self, category_id: viewModel.category_id, sort_id: viewModel.sort_id , active: true)
         self.dismiss(animated: true, completion: nil)
+        
     }
     
 }

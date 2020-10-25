@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController()
-        appCoordinator = AppCoordinator(with: window?.rootViewController as! UINavigationController)
-        appCoordinator?.start()
+        if let viewController = window?.rootViewController as? UINavigationController {
+            appCoordinator = AppCoordinator(with: viewController)
+            appCoordinator?.start()
+        }
         window?.makeKeyAndVisible()
         networkReachability()
         return true
@@ -71,7 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let controller = UIAlertController(title: "No Internet connection", message: "CyberMarket requires an Internet connection", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
             controller.addAction(ok)
-            window?.rootViewController!.present(controller, animated: true, completion: nil)
+            if let viewController = window?.rootViewController {
+                viewController.present(controller, animated: true, completion: nil)
+            }
         }
        
     }

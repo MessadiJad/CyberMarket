@@ -18,13 +18,13 @@ class ListViewModel: FilterViewControllerDelegate {
     
     func getItemList(completionHandler: @escaping CompletionHandler) {
         ItemService.sharedService.getItemsWithCompletion { [self] response in
+            removeAllKeys()
             switch response {
             case .Failure(let error):
                 print("Error fetching items: \(error)")
             case .Success(let returnedItem):
                 self.items = returnedItem
                 self.filteredItems = self.items
-                UserDefaults.standard.removeObject(forKey: "category_id")
                 completionHandler(true)
             }
         }
@@ -71,5 +71,10 @@ class ListViewModel: FilterViewControllerDelegate {
             }
         } else {self.filteredItems = items }
        
+    }
+    
+    func removeAllKeys() {
+        UserDefaults.standard.removeObject(forKey: "category_id")
+        UserDefaults.standard.removeObject(forKey: "sort_id")
     }
 }

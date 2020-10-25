@@ -19,7 +19,7 @@ enum APIRouter {
 class Environment {
     
     static let server:Server = .developement
-        
+    
     class func APIBasePath() -> String {
         switch self.server {
         case .developement:
@@ -27,11 +27,11 @@ class Environment {
         }
     }
     
-  static func urlType(type: APIRouter) -> URL {
+    static func urlType(_ type: APIRouter) -> URL? {
         let baseURL:String = {
             return Environment.APIBasePath()
         }()
-    
+        
         let relativePath: String? = {
             switch type {
             case .items:
@@ -41,11 +41,12 @@ class Environment {
             }
         }()
         
-        var url = URL(string: baseURL)!
-        if let relativePath = relativePath {
-            url = url.appendingPathComponent(relativePath)
+        if let url = URL(string: baseURL) {
+            if let relativePath = relativePath {
+                return url.appendingPathComponent(relativePath)
+            }
         }
-        return url
+        return nil
     }
     
 }

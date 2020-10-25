@@ -39,9 +39,13 @@ class DetailsItemViewController: UIViewController {
     
     private func setupUI() {
         setupScrollView()
-        setupImageItem(imageUrl: viewModel.thumbImageUrl!)
+        if let thumbImageUrl = viewModel.thumbImageUrl {
+            setupImageItem(imageUrl: thumbImageUrl)
+        }
         setupItemNameLabel(name: viewModel.title)
-        setupItemDateLabel(date: DateApp.stringWithLocalTime(fromDate: viewModel.creation_date!, withFormat: .dateFormat) )
+        if let creation_date = viewModel.creation_date {
+            setupItemDateLabel(date: DateApp.stringWithLocalTime(fromDate: creation_date, withFormat: .dateFormat) )
+        }
         setupItemDiscriptionLabel(description: viewModel.description)
         setupItemPriceView(price: "  \(String(viewModel.price)) €")
         setupUrgentIndicator(urgent: viewModel.isUrgent)
@@ -100,9 +104,7 @@ class DetailsItemViewController: UIViewController {
     }
     
     func setupItemPriceView(price: String) {
-        itemPriceButton.backgroundColor = viewModel.categoryName.color
-        itemPriceButton.setTitle(price, for: .normal)
-        itemPriceButton.setTitleColor(UIColor.white, for: .normal)
+        itemPriceButton.create(price, titleColor: .white, backgroundColor: viewModel.categoryName.color)
         if #available(iOS 13.0, *) {
             itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)
         } else {

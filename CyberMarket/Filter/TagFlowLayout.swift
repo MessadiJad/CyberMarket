@@ -2,8 +2,8 @@
 import UIKit
 
 class Row {
-    var attributes = [UICollectionViewLayoutAttributes]()
-    var spacing: CGFloat = 0
+    fileprivate var attributes = [UICollectionViewLayoutAttributes]()
+    private var spacing: CGFloat = 0
 
     init(spacing: CGFloat) {
         self.spacing = spacing

@@ -78,3 +78,12 @@ extension UICollectionView {
         for indexPath in selectedItems { deselectItem(at: indexPath, animated: animated) }
     }
 }
+
+
+extension UIButton {
+    func create(_ title : String, titleColor: UIColor, backgroundColor : UIColor){
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(titleColor, for: .normal)
+        self.backgroundColor = backgroundColor
+    }
+}

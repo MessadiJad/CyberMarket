@@ -29,7 +29,9 @@ class ItemService {
     
     func getItemsWithCompletion(completion: @escaping ((ItemListResponse) -> Void)) {
         
-        let request = URLRequest(url: Environment.urlType(type: .items))
+        guard let url = Environment.urlType(.items) else {return}
+        
+        let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -84,7 +86,8 @@ class ItemService {
     
     func getCategoryWithCompletion(completion: @escaping ((CategoryListResponse) -> Void)) {
         
-        let request = URLRequest(url: Environment.urlType(type: .category))
+        guard let url = Environment.urlType(.category) else {return}
+        let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             

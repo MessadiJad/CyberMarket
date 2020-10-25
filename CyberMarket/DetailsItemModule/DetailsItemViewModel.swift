@@ -22,9 +22,11 @@ class DetailsItemViewModel {
         self.title = item.title
         self.price = item.price
         self.categoryName = categoryName
-        self.creation_date = DateApp.dateLocal(fromString: (item.creation_date)!, withFormat: .isoFull)
         self.description = item.description
         self.isUrgent = item.is_urgent
+        if let creation_date = item.creation_date {
+            self.creation_date = DateApp.dateLocal(fromString: creation_date, withFormat: .isoFull)
+        }
     }
     
 }

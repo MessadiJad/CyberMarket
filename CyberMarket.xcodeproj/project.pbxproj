@@ -19,6 +19,8 @@
 		E11087E425408C7400BF38F0 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087E325408C7400BF38F0 /* ItemCell.swift */; };
 		E11087F825408EB200BF38F0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087F725408EB200BF38F0 /* Item.swift */; };
 		E11087FE254092BD00BF38F0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087FD254092BD00BF38F0 /* Environment.swift */; };
+		E1207B962546C898009046E8 /* TestItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B952546C898009046E8 /* TestItemViewModel.swift */; };
+		E1207B9B2546F640009046E8 /* TestFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */; };
 		E15D04AF25409C44008DC516 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extension.swift */; };
 		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
 		E198830D25435B70001F8B55 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198830C25435B70001F8B55 /* FilterViewController.swift */; };
@@ -76,6 +78,8 @@
 		E11087E325408C7400BF38F0 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		E11087F725408EB200BF38F0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E11087FD254092BD00BF38F0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		E1207B952546C898009046E8 /* TestItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestItemViewModel.swift; sourceTree = "<group>"; };
+		E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFilterViewModel.swift; sourceTree = "<group>"; };
 		E15D04AE25409C44008DC516 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 		E198830C25435B70001F8B55 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 			children = (
 				E11087AC2540855000BF38F0 /* CyberMarketTests.swift */,
 				E11087AE2540855000BF38F0 /* Info.plist */,
+				E1207B952546C898009046E8 /* TestItemViewModel.swift */,
+				E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */,
 			);
 			path = CyberMarketTests;
 			sourceTree = "<group>";
@@ -425,6 +431,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E11087AD2540855000BF38F0 /* CyberMarketTests.swift in Sources */,
+				E1207B9B2546F640009046E8 /* TestFilterViewModel.swift in Sources */,
+				E1207B962546C898009046E8 /* TestItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

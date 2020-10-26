@@ -12,9 +12,9 @@ final class FilterCoordinator: Coordinator {
     fileprivate let navigationController: UINavigationController
     let filterViewController: FilterViewController
 
-    init(navigationController: UINavigationController, categorys: [Category]) {
+    init(navigationController: UINavigationController,items: [Item], categorys: [Category]) {
         self.navigationController = navigationController
-        let viewModel = FilterViewModel(categorys: categorys)
+        let viewModel = FilterViewModel(items: items, categorys: categorys)
         self.filterViewController = FilterViewController(viewModel)
     }
 

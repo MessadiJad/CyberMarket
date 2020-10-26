@@ -48,7 +48,11 @@ class ListItemsViewController: UITableViewController {
     }
     
     @objc func fetchData()  {
-        viewModel.getCategory()
+        viewModel.getCategory{ loaded in
+            DispatchQueue.main.async { [self] in
+            self.tableView.reloadData()
+            }
+        }
         
         viewModel.getItemList { loaded in
             if loaded {
@@ -100,14 +104,14 @@ class ListItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let navigationController = self.navigationController {
-            detailsCoordinator = DetailsItemCoordinator(navigationController: navigationController , item: self.viewModel.items[indexPath.row], category: self.viewModel.categorys[self.viewModel.items[indexPath.row].category_id - 1])
+            detailsCoordinator = DetailsItemCoordinator(navigationController: navigationController , item: self.viewModel.filteredItems[indexPath.row], category: self.viewModel.categorys[self.viewModel.filteredItems[indexPath.row].category_id - 1])
             detailsCoordinator?.start()
         }
     }
     
     @objc func didSelectFilter() {
         if let navigationController = self.navigationController {
-            filterCoordinator = FilterCoordinator(navigationController: navigationController, categorys: self.viewModel.categorys)
+            filterCoordinator = FilterCoordinator(navigationController: navigationController, items: viewModel.items, categorys: self.viewModel.categorys)
             filterCoordinator?.filterViewController.viewModel.delegate =  self.viewModel
             filterCoordinator?.start()
         }

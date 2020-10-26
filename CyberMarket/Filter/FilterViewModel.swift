@@ -9,25 +9,30 @@ import Foundation
 import UIKit
 
 protocol FilterViewControllerDelegate:class {
-    func filterd(_ controller: FilterViewController, category_id: Int?,sort_id:Int?, active: Bool)
+    func filterd(_ controller: FilterViewController, items: [Item], category_id: Int?,sort_id:Int?, active: Bool)
 }
 
 class FilterViewModel {
     weak var delegate: FilterViewControllerDelegate?
     var currentIndexPath : IndexPath?
     
+    var items = [Item]()
     var categorys = [Category]()
     var sortTitle = ["Les plus recents","Les plus anciens","Les plus urgents"]
     var sortId = [12,13,14]
     var category_id : Int?
     var sort_id : Int?
     
-    init(categorys : [Category]) {
+    init() {
+        
+    }
+    init(items: [Item], categorys : [Category]) {
+        self.items = items
         self.categorys = categorys
     }
     
     func filter (controller: FilterViewController, category_id:Int?, sort_id: Int?, active: Bool) {
-        delegate?.filterd(controller, category_id: category_id, sort_id: sort_id, active: active)
+        delegate?.filterd(controller, items:items , category_id: category_id, sort_id: sort_id, active: active)
     }
     
     func resetFilter() {

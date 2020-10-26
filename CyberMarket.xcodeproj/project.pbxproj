@@ -21,8 +21,9 @@
 		E11087FE254092BD00BF38F0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087FD254092BD00BF38F0 /* Environment.swift */; };
 		E1207B962546C898009046E8 /* TestItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B952546C898009046E8 /* TestItemViewModel.swift */; };
 		E1207B9B2546F640009046E8 /* TestFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */; };
-		E15D04AF25409C44008DC516 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extension.swift */; };
+		E15D04AF25409C44008DC516 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extensions.swift */; };
 		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
+		E18F13D62547719E00150A9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E18F13D52547719E00150A9D /* Localizable.strings */; };
 		E198830D25435B70001F8B55 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198830C25435B70001F8B55 /* FilterViewController.swift */; };
 		E198831225435C02001F8B55 /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198831125435C02001F8B55 /* FilterCoordinator.swift */; };
 		E198831725435C84001F8B55 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198831625435C84001F8B55 /* FilterViewModel.swift */; };
@@ -80,8 +81,9 @@
 		E11087FD254092BD00BF38F0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E1207B952546C898009046E8 /* TestItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestItemViewModel.swift; sourceTree = "<group>"; };
 		E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFilterViewModel.swift; sourceTree = "<group>"; };
-		E15D04AE25409C44008DC516 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		E15D04AE25409C44008DC516 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		E18F13D52547719E00150A9D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E198830C25435B70001F8B55 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E198831125435C02001F8B55 /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
 		E198831625435C84001F8B55 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
 				E11087A32540854F00BF38F0 /* Info.plist */,
 				E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */,
+				E18F13D52547719E00150A9D /* Localizable.strings */,
 			);
 			path = CyberMarket;
 			sourceTree = "<group>";
@@ -211,7 +214,7 @@
 				E1C22FE62541BD830052AC17 /* DateGeneric.swift */,
 				E1C22FE12541BD190052AC17 /* Colors+Extension.swift */,
 				E11087FD254092BD00BF38F0 /* Environment.swift */,
-				E15D04AE25409C44008DC516 /* Extension.swift */,
+				E15D04AE25409C44008DC516 /* Extensions.swift */,
 				E1C22FD425417B740052AC17 /* AppConstants.swift */,
 				E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */,
 			);
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E11087A22540854F00BF38F0 /* LaunchScreen.storyboard in Resources */,
+				E18F13D62547719E00150A9D /* Localizable.strings in Resources */,
 				E110879F2540854F00BF38F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +416,7 @@
 				E1C2301725420B8B0052AC17 /* DetailsItemViewModel.swift in Sources */,
 				E1C22FF02541D8C30052AC17 /* Category.swift in Sources */,
 				E1C2303325422FE20052AC17 /* AppCoordinator.swift in Sources */,
-				E15D04AF25409C44008DC516 /* Extension.swift in Sources */,
+				E15D04AF25409C44008DC516 /* Extensions.swift in Sources */,
 				E1C22FD525417B740052AC17 /* AppConstants.swift in Sources */,
 				E11087E425408C7400BF38F0 /* ItemCell.swift in Sources */,
 				E198830D25435B70001F8B55 /* FilterViewController.swift in Sources */,

@@ -11,8 +11,8 @@ class TagViewCell: UICollectionViewCell {
     let itemTitleLabel = UILabel()
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = isSelected ? UIColor.black : UIColor.white
-            itemTitleLabel.textColor =  isSelected ? UIColor.white : UIColor.black
+            self.backgroundColor = isSelected ? .black : .white
+            itemTitleLabel.textColor =  isSelected ? .white : .black
         }
     }
     

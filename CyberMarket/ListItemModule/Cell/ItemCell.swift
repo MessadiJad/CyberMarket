@@ -53,7 +53,7 @@ class ItemCell: UITableViewCell {
         } else {
             urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
         }
-        urgentImageView.tintColor = UIColor.red
+        urgentImageView.tintColor = .red
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         urgentImageView.layer.masksToBounds = true
         urgentImageView.isHidden = !urgent

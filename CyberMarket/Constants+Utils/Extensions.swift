@@ -1,5 +1,5 @@
 //
-//  Extension.swift
+//  Extensions.swift
 //  CyberMarket
 //
 //  Created by Jad Messadi on 10/21/20.

@@ -110,7 +110,7 @@ class DetailsItemViewController: UIViewController {
         } else {
             itemPriceButton.setImage(UIImage(named: "cart-icon")?.withRenderingMode(.alwaysTemplate) , for: .normal)
         }
-        itemPriceButton.tintColor = UIColor.white
+        itemPriceButton.tintColor = .white
         self.view.addSubview(itemPriceButton)
         
         itemPriceButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 70, enableInsets: true)
@@ -123,7 +123,7 @@ class DetailsItemViewController: UIViewController {
         } else {
             urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
         }
-        urgentImageView.tintColor = UIColor.red
+        urgentImageView.tintColor = .red
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         let rightBarButton = UIBarButtonItem(customView: urgentImageView)
         if urgent { self.navigationItem.rightBarButtonItem = rightBarButton }

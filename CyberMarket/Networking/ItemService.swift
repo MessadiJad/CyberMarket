@@ -112,7 +112,7 @@ class ItemService {
                             
                             guard let category_name = categoryEntry?["name"] as? String else { continue }
                             
-                            returnedCategory.append(Category(id: category_id, name: category_name, color: UIColor.randomColor(seed: category_name)))
+                            returnedCategory.append(Category(id: category_id, name: category_name, color: .randomColor(seed: category_name)))
                         }
                     }
                     result = CategoryListResponse.Success(category: returnedCategory)

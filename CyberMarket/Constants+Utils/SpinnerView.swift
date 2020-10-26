@@ -19,7 +19,7 @@ class SpinnerView {
             }
         }
         
-        containerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+        containerView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
         containerView.frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = true
@@ -30,11 +30,11 @@ class SpinnerView {
         spinner.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
 
-        retryButton.create("Réessayer", titleColor: .white, backgroundColor: .clear)
+        retryButton.create(NSLocalizedString("RETRY_BUTTON", comment: ""), titleColor: UIColor.white, backgroundColor: UIColor.clear)
         retryButton.addTarget(self, action:  #selector(postRetryService), for: UIControl.Event.touchUpInside)
         retryButton.layer.borderWidth = 1
         retryButton.layer.borderColor = UIColor.white.cgColor
-        retryButton.setTitleColor(UIColor.black, for: .highlighted)
+        retryButton.setTitleColor(.black, for: .highlighted)
 
         retryButton.layer.cornerRadius = 20
 

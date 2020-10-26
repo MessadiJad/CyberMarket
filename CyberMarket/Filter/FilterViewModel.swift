@@ -18,7 +18,9 @@ class FilterViewModel {
     
     var items = [Item]()
     var categorys = [Category]()
-    var sortTitle = ["Les plus recents","Les plus anciens","Les plus urgents"]
+    var sortTitle = [NSLocalizedString("SORT_NEWEST_DATE_BUTTON", comment: ""),
+                     NSLocalizedString("SORT_OLDER_DATE_BUTTON", comment: ""),
+                     NSLocalizedString("SORT_IMPORTANT_BUTTON", comment: "")]
     var sortId = [12,13,14]
     var category_id : Int?
     var sort_id : Int?

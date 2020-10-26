@@ -32,7 +32,7 @@ class ListItemsViewController: UITableViewController {
         spinnerView.show(uiView: self.view)
         
         self.initNavigationBar()
-        tableView.backgroundColor = UIColor.init(hex: "#f0f0f0")
+        tableView.backgroundColor = .init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         fetchData()

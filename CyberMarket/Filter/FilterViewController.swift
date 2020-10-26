@@ -21,14 +21,14 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func viewDidLoad() {
-        self.title = "Filtre"
-        collectionView.backgroundColor = UIColor.white
-        let cancelBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(closeFilter))
-        cancelBarButtonItem.tintColor = UIColor.black
+        self.title = NSLocalizedString("FILTRE_TITLE", comment: "")
+        collectionView.backgroundColor = .white
+        let cancelBarButtonItem = UIBarButtonItem(title: NSLocalizedString("ANNULER_BUTTON", comment: ""), style: .plain, target: self, action: #selector(closeFilter))
+        cancelBarButtonItem.tintColor = .black
         self.navigationItem.rightBarButtonItem  = cancelBarButtonItem
         
-        resettBarButtonItem = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetFilter))
-        resettBarButtonItem.tintColor = UIColor.black
+        resettBarButtonItem = UIBarButtonItem(title: NSLocalizedString("RESET_BUTTON", comment: ""), style: .done, target: self, action: #selector(resetFilter))
+        resettBarButtonItem.tintColor = .black
         resettBarButtonItem.isEnabled = false
         self.navigationItem.leftBarButtonItem  = resettBarButtonItem
         setupApplyFilterButton()
@@ -41,7 +41,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         layout.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: 30)
         collectionView.allowsMultipleSelection = false
         self.applyFilterButton.isEnabled = false
-        self.applyFilterButton.backgroundColor = UIColor.lightGray
+        self.applyFilterButton.backgroundColor = .lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,9 +72,9 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
             if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader {
                 switch indexPath.section {
                 case 0:
-                    sectionHeader.label.text = "Categorie"
+                    sectionHeader.label.text = NSLocalizedString("CATEGORY_SECTION_TITLE", comment: "")
                 case 1:
-                    sectionHeader.label.text = "Tri"
+                    sectionHeader.label.text = NSLocalizedString("SORT_SECTION_TITLE", comment: "")
                 default:
                     break
                 }
@@ -120,15 +120,15 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.applyFilterButton.isEnabled = true
-        self.applyFilterButton.backgroundColor = UIColor.black
+        self.applyFilterButton.backgroundColor = .black
         resettBarButtonItem.isEnabled = true
         viewModel.currentIndexPath = indexPath
     }
     
     func setupApplyFilterButton() {
-        applyFilterButton.create("Appliquer", titleColor: .white, backgroundColor: .black)
+        applyFilterButton.create(NSLocalizedString("APPLY_BUTTON", comment: ""), titleColor: .white, backgroundColor: .black)
         applyFilterButton.addTarget(self, action:  #selector(applyFilter), for: .touchUpInside)
-        applyFilterButton.tintColor = UIColor.white
+        applyFilterButton.tintColor = .white
         self.view.addSubview(applyFilterButton)
         
         applyFilterButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 70, enableInsets: true)
@@ -140,7 +140,7 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     @objc func resetFilter() {
         self.applyFilterButton.isEnabled = false
-        self.applyFilterButton.backgroundColor = UIColor.lightGray
+        self.applyFilterButton.backgroundColor = .lightGray
         resettBarButtonItem.isEnabled = false
         self.collectionView.deselectAllItems(animated: true)
         self.viewModel.resetFilter()

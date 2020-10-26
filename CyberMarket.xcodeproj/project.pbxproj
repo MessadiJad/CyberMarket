@@ -28,9 +28,10 @@
 		E198831225435C02001F8B55 /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198831125435C02001F8B55 /* FilterCoordinator.swift */; };
 		E198831725435C84001F8B55 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198831625435C84001F8B55 /* FilterViewModel.swift */; };
 		E1A328F7254375A000178177 /* TagViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A328F6254375A000178177 /* TagViewCell.swift */; };
+		E1B15D3A254784180000CB5C /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B15D39254784180000CB5C /* BadgeView.swift */; };
 		E1C22FD0254170BF0052AC17 /* NavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FCF254170BF0052AC17 /* NavigationBarButton.swift */; };
 		E1C22FD525417B740052AC17 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FD425417B740052AC17 /* AppConstants.swift */; };
-		E1C22FE22541BD190052AC17 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FE12541BD190052AC17 /* Colors+Extension.swift */; };
+		E1C22FE22541BD190052AC17 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FE12541BD190052AC17 /* Colors+Extensions.swift */; };
 		E1C22FE72541BD840052AC17 /* DateGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FE62541BD830052AC17 /* DateGeneric.swift */; };
 		E1C22FF02541D8C30052AC17 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C22FEF2541D8C30052AC17 /* Category.swift */; };
 		E1C2301225420A540052AC17 /* DetailsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C2301125420A540052AC17 /* DetailsItemViewController.swift */; };
@@ -88,9 +89,10 @@
 		E198831125435C02001F8B55 /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
 		E198831625435C84001F8B55 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		E1A328F6254375A000178177 /* TagViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewCell.swift; sourceTree = "<group>"; };
+		E1B15D39254784180000CB5C /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E1C22FCF254170BF0052AC17 /* NavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarButton.swift; sourceTree = "<group>"; };
 		E1C22FD425417B740052AC17 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		E1C22FE12541BD190052AC17 /* Colors+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
+		E1C22FE12541BD190052AC17 /* Colors+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
 		E1C22FE62541BD830052AC17 /* DateGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateGeneric.swift; sourceTree = "<group>"; };
 		E1C22FEF2541D8C30052AC17 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E1C2301125420A540052AC17 /* DetailsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +155,7 @@
 			children = (
 				E11087922540854C00BF38F0 /* AppDelegate.swift */,
 				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
-				E198830B25435B5B001F8B55 /* Filter */,
+				E198830B25435B5B001F8B55 /* FilterModule */,
 				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E1C2301025420A1F0052AC17 /* DetailsItemModule */,
 				E1C22FF42541E4AD0052AC17 /* Coordinator */,
@@ -212,11 +214,12 @@
 			isa = PBXGroup;
 			children = (
 				E1C22FE62541BD830052AC17 /* DateGeneric.swift */,
-				E1C22FE12541BD190052AC17 /* Colors+Extension.swift */,
+				E1C22FE12541BD190052AC17 /* Colors+Extensions.swift */,
 				E11087FD254092BD00BF38F0 /* Environment.swift */,
 				E15D04AE25409C44008DC516 /* Extensions.swift */,
 				E1C22FD425417B740052AC17 /* AppConstants.swift */,
 				E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */,
+				E1B15D39254784180000CB5C /* BadgeView.swift */,
 			);
 			path = "Constants+Utils";
 			sourceTree = "<group>";
@@ -230,15 +233,23 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		E198830B25435B5B001F8B55 /* Filter */ = {
+		E198830B25435B5B001F8B55 /* FilterModule */ = {
 			isa = PBXGroup;
 			children = (
-				E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */,
+				E1B15D32254780C80000CB5C /* Cell */,
 				E198830C25435B70001F8B55 /* FilterViewController.swift */,
 				E198831625435C84001F8B55 /* FilterViewModel.swift */,
-				E1A328F6254375A000178177 /* TagViewCell.swift */,
 			);
-			path = Filter;
+			path = FilterModule;
+			sourceTree = "<group>";
+		};
+		E1B15D32254780C80000CB5C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E1A328F6254375A000178177 /* TagViewCell.swift */,
+				E1D73DCE25440E44003E8ADA /* TagFlowLayout.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E1C22FEE2541D8AF0052AC17 /* Model */ = {
@@ -408,7 +419,8 @@
 				E1DDF0C32544B8CE00DB1F41 /* Reachability.swift in Sources */,
 				E1C2301225420A540052AC17 /* DetailsItemViewController.swift in Sources */,
 				E11087F825408EB200BF38F0 /* Item.swift in Sources */,
-				E1C22FE22541BD190052AC17 /* Colors+Extension.swift in Sources */,
+				E1B15D3A254784180000CB5C /* BadgeView.swift in Sources */,
+				E1C22FE22541BD190052AC17 /* Colors+Extensions.swift in Sources */,
 				E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */,
 				E11087DB25408BC800BF38F0 /* ListViewModel.swift in Sources */,
 				E1C22FD0254170BF0052AC17 /* NavigationBarButton.swift in Sources */,

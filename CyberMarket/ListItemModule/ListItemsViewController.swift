@@ -8,7 +8,9 @@
 import UIKit
 
 
-class ListItemsViewController: UITableViewController {
+class ListItemsViewController: UITableViewController, BadgeShownDelegate {
+  
+    
     
     let cellReuseIdendifier = "itemCellId"
     
@@ -17,7 +19,7 @@ class ListItemsViewController: UITableViewController {
     var filterCoordinator: FilterCoordinator?
     let spinnerView = SpinnerView()
     var filterButton = UIButton()
-    
+
     init(viewModel: ListViewModel ) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -30,15 +32,15 @@ class ListItemsViewController: UITableViewController {
     override func viewDidLoad() {
         
         spinnerView.show(uiView: self.view)
-        
         self.initNavigationBar()
+        viewModel.delegate = self
+
         tableView.backgroundColor = .init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         fetchData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: Notification.Name("RetryServiceNotificationIdentifier"), object: nil)
-
     
     }
     
@@ -63,8 +65,6 @@ class ListItemsViewController: UITableViewController {
             }
         }
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (viewModel.filteredItems.count == 0) {
@@ -117,8 +117,13 @@ class ListItemsViewController: UITableViewController {
         }
     }
     
+    func showBadge(number: Int, active: Bool) {
+        self.navigationItem.rightBarButtonItem!.addBadge(number: number, active: active)
+    }
+  
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
+    
 }
 

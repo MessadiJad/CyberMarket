@@ -117,13 +117,10 @@ class DetailsItemViewController: UIViewController {
     }
     
     func setupUrgentIndicator(urgent: Bool) {
-        urgentImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        if #available(iOS 13.0, *) {
-            urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
-        } else {
-            urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
-        }
-        urgentImageView.tintColor = .red
+        urgentImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    
+        urgentImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
+        urgentImageView.tintColor = .init(hex: "#ff6961")
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         let rightBarButton = UIBarButtonItem(customView: urgentImageView)
         if urgent { self.navigationItem.rightBarButtonItem = rightBarButton }

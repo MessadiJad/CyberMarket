@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol BadgeShownDelegate:class {
+    func showBadge(number:Int, active: Bool)
+}
+
 class ListViewModel: FilterViewControllerDelegate {
 
     var items = [Item]()
     var categorys = [Category]()
     var filteredItems = [Item]()
+    weak var delegate: BadgeShownDelegate?
 
     typealias CompletionHandler = (_ success:Bool) -> Void
     var competion: Bool = false
@@ -68,10 +73,11 @@ class ListViewModel: FilterViewControllerDelegate {
                 default:
                     break
                 }
-                
-              
             }
-        } else {self.filteredItems = items }
+            delegate?.showBadge(number: 1, active: true)
+        } else {self.filteredItems = items
+            delegate?.showBadge(number: 0, active: false)
+        }
        
     }
     

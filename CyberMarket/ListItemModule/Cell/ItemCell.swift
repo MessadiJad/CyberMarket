@@ -48,17 +48,14 @@ class ItemCell: UITableViewCell {
     }
     
     func setupUrgentIcon(urgent: Bool){
-        if #available(iOS 13.0, *) {
-            urgentImageView.image = UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate)
-        } else {
-            urgentImageView.image = UIImage(named: "urgent-icon")?.withRenderingMode(.alwaysTemplate)
-        }
-        urgentImageView.tintColor = .red
+
+        urgentImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
+        urgentImageView.tintColor = .init(hex: "#ff6961")
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit
         urgentImageView.layer.masksToBounds = true
         urgentImageView.isHidden = !urgent
         addSubview(urgentImageView)
-        urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 35, height: 35, enableInsets: false)
+        urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 30, height: 30, enableInsets: false)
     }
     
     func setupCategoryView(color: UIColor){
@@ -69,6 +66,7 @@ class ItemCell: UITableViewCell {
     }
     
     func setupItemImage(imageUrl: String){
+        itemImage.removeFromSuperview()
         itemImage = UIImageView(image:UIImage())
         itemImage.contentMode = .scaleToFill
         itemImage.downloaded(from: imageUrl)

@@ -1,7 +1,6 @@
 import UIKit
 
 
-
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var viewModel : FilterViewModel

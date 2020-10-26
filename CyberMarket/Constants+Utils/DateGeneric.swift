@@ -32,8 +32,8 @@ struct DateApp {
         
         let formatter = DateFormatter()
         formatter.dateFormat = format.text
-        formatter.locale = Locale(identifier: "en_US_POSIX") // For time format.
-        formatter.timeZone = TimeZone(abbreviation:"UTC") // for calculate time.
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(abbreviation:"UTC")
         
         if let date = formatter.date(from: stringDate){
             return date
@@ -45,8 +45,8 @@ struct DateApp {
         
         let formatter = DateFormatter()
         formatter.dateFormat = format.text
-        formatter.locale = Locale(identifier: "en_US_POSIX") // For time format.
-        formatter.timeZone = TimeZone.current // for calculate time.
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone.current 
         
         if let date = formatter.date(from: stringDate){
             return date

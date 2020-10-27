@@ -48,17 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func networkReachability(){
-        if Reachability.isConnectedToNetwork(){
-            print("Internet Connection Available!")
-        }else{
-            let controller = UIAlertController(title: NSLocalizedString("NO_INTERNET_TITLE", comment: ""), message: NSLocalizedString("NO_INTERNET_BODY_MESSAGE", comment: ""), preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("OK_BUTTON", comment: ""), style: .default, handler: nil)
-            controller.addAction(ok)
-            if let viewController = window?.rootViewController {
-                viewController.present(controller, animated: true, completion: nil)
-            }
-        }
-       
+        if !Reachability.isConnectedToNetwork(){
+            showErrorAlertView(title: NSLocalizedString("NO_INTERNET_TITLE", comment: ""), body: NSLocalizedString("NO_INTERNET_BODY_MESSAGE", comment: ""))
+        }       
     }
 }
 

@@ -9,8 +9,7 @@ import UIKit
 
 
 class ListItemsViewController: UITableViewController, BadgeShownDelegate {
-  
-    
+ 
     
     let cellReuseIdendifier = "itemCellId"
     
@@ -117,10 +116,14 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
         }
     }
     
-    func showBadge(number: Int, active: Bool) {
-        self.navigationItem.rightBarButtonItem!.addBadge(number: number, active: active)
+    func showBadge(number: Int) {
+        self.navigationItem.rightBarButtonItem!.addBadge(number: number)
     }
   
+    func hideBadge() {
+        self.navigationItem.rightBarButtonItem!.removeBadge()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }

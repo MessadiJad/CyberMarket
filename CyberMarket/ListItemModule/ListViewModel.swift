@@ -8,7 +8,8 @@
 import UIKit
 
 protocol BadgeShownDelegate:class {
-    func showBadge(number:Int, active: Bool)
+    func showBadge(number:Int)
+    func hideBadge()
 }
 
 class ListViewModel: FilterViewControllerDelegate {
@@ -25,8 +26,10 @@ class ListViewModel: FilterViewControllerDelegate {
         ItemService.sharedService.getItemsWithCompletion { [self] response in
             removeAllKeys()
             switch response {
-            case .Failure(let error):
-                print("Error fetching items: \(error)")
+            case .Failure(_):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_BODY_ITEMS", comment: ""))
+                }
             case .Success(let returnedItem):
                 self.items = returnedItem
                 self.filteredItems = self.items
@@ -38,10 +41,12 @@ class ListViewModel: FilterViewControllerDelegate {
     func getCategory(completionHandler: @escaping CompletionHandler){
         ItemService.sharedService.getCategoryWithCompletion { response in
             switch response {
-            case .Failure(let error):
-                print("Error fetching category: \(error)")
+            case .Failure(_):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+                showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_TITLE_CATEGORY", comment: ""))
+                }
             case .Success(let returnedCategory):
-            self.categorys = returnedCategory
+                self.categorys = returnedCategory
             completionHandler(true)
 
             }
@@ -74,9 +79,9 @@ class ListViewModel: FilterViewControllerDelegate {
                     break
                 }
             }
-            delegate?.showBadge(number: 1, active: true)
+            delegate?.showBadge(number: 1)
         } else {self.filteredItems = items
-            delegate?.showBadge(number: 0, active: false)
+            delegate?.hideBadge()
         }
        
     }

@@ -20,7 +20,7 @@ extension UIBarButtonItem {
         }
     }
 
-    func addBadge(number: Int, withOffset offset: CGPoint = CGPoint.zero, andColor color: UIColor = .init(hex: "#ff6961"), andFilled filled: Bool = true, active: Bool) {
+    func addBadge(number: Int, withOffset offset: CGPoint = CGPoint.zero, andColor color: UIColor = .init(hex: "#ff6961"), andFilled filled: Bool = true) {
         guard let view = self.value(forKey: "view") as? UIView else { return }
 
         badgeLayer?.removeFromSuperlayer()
@@ -46,9 +46,6 @@ extension UIBarButtonItem {
         // Save Badge as UIBarButtonItem property
         objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
-        if !active{
-            self.removeBadge()
-        }
     }
 
     func updateBadge(number: Int) {

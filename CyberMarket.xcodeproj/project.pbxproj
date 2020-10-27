@@ -21,6 +21,7 @@
 		E11087FE254092BD00BF38F0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11087FD254092BD00BF38F0 /* Environment.swift */; };
 		E1207B962546C898009046E8 /* TestItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B952546C898009046E8 /* TestItemViewModel.swift */; };
 		E1207B9B2546F640009046E8 /* TestFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */; };
+		E13837E02548061A0095D48D /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13837DF2548061A0095D48D /* ErrorAlertView.swift */; };
 		E15D04AF25409C44008DC516 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extensions.swift */; };
 		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
 		E18F13D62547719E00150A9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E18F13D52547719E00150A9D /* Localizable.strings */; };
@@ -82,6 +83,7 @@
 		E11087FD254092BD00BF38F0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E1207B952546C898009046E8 /* TestItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestItemViewModel.swift; sourceTree = "<group>"; };
 		E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFilterViewModel.swift; sourceTree = "<group>"; };
+		E13837DF2548061A0095D48D /* ErrorAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		E15D04AE25409C44008DC516 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 		E18F13D52547719E00150A9D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				E11087922540854C00BF38F0 /* AppDelegate.swift */,
 				E11087942540854C00BF38F0 /* SceneDelegate.swift */,
+				E18F13D52547719E00150A9D /* Localizable.strings */,
 				E198830B25435B5B001F8B55 /* FilterModule */,
 				E11087D425408B9800BF38F0 /* ListItemModule */,
 				E1C2301025420A1F0052AC17 /* DetailsItemModule */,
@@ -166,7 +169,6 @@
 				E11087A02540854F00BF38F0 /* LaunchScreen.storyboard */,
 				E11087A32540854F00BF38F0 /* Info.plist */,
 				E110879B2540854C00BF38F0 /* CyberMarket.xcdatamodeld */,
-				E18F13D52547719E00150A9D /* Localizable.strings */,
 			);
 			path = CyberMarket;
 			sourceTree = "<group>";
@@ -220,6 +222,7 @@
 				E1C22FD425417B740052AC17 /* AppConstants.swift */,
 				E1DDF0B12544A1AD00DB1F41 /* SpinnerView.swift */,
 				E1B15D39254784180000CB5C /* BadgeView.swift */,
+				E13837DF2548061A0095D48D /* ErrorAlertView.swift */,
 			);
 			path = "Constants+Utils";
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				E110879D2540854C00BF38F0 /* CyberMarket.xcdatamodeld in Sources */,
 				E11087DB25408BC800BF38F0 /* ListViewModel.swift in Sources */,
 				E1C22FD0254170BF0052AC17 /* NavigationBarButton.swift in Sources */,
+				E13837E02548061A0095D48D /* ErrorAlertView.swift in Sources */,
 				E198831725435C84001F8B55 /* FilterViewModel.swift in Sources */,
 				E1C2301725420B8B0052AC17 /* DetailsItemViewModel.swift in Sources */,
 				E1C22FF02541D8C30052AC17 /* Category.swift in Sources */,

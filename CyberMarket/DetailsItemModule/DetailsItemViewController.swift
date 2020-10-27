@@ -64,7 +64,7 @@ class DetailsItemViewController: UIViewController {
         itemImageView.downloaded(from: imageUrl)
         scrollView.addSubview(itemImageView)
         
-        itemImageView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
+        itemImageView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
     }
     
     func setupItemNameLabel(name: String){

@@ -1,5 +1,11 @@
-import UIKit
+//
+//  FilterViewController.swift
+//  CyberMarket
+//
+//  Created by Jad Messadi on 10/23/20.
+//
 
+import UIKit
 
 class FilterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -7,7 +13,6 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     private let applyFilterButton = UIButton()
     private var resettBarButtonItem = UIBarButtonItem()
     private let layout = TagFlowLayout()
-    
     let reuseIdentifier = "cell"
     
     init(_ viewModel: FilterViewModel ) {
@@ -47,18 +52,15 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         DispatchQueue.main.async { [self] in
-            
             if viewModel.getSortId() != Int()  {
                 let indexPath = NSIndexPath(row: viewModel.getSortId() - 1 , section: 1)
                 self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
             }
-            
             if viewModel.getCategory() != Int() {
                 let indexPath = NSIndexPath(row: viewModel.getCategory() - 1 , section: 0)
                 self.collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
             }
             resettBarButtonItem.isEnabled = true
-            
         }
     }
     
@@ -71,9 +73,9 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
             if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader {
                 switch indexPath.section {
                 case 0:
-                    sectionHeader.label.text = NSLocalizedString("CATEGORY_SECTION_TITLE", comment: "")
+                    sectionHeader.HeaderTitleLabel.text = NSLocalizedString("CATEGORY_SECTION_TITLE", comment: "")
                 case 1:
-                    sectionHeader.label.text = NSLocalizedString("SORT_SECTION_TITLE", comment: "")
+                    sectionHeader.HeaderTitleLabel.text = NSLocalizedString("SORT_SECTION_TITLE", comment: "")
                 default:
                     break
                 }
@@ -109,6 +111,9 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
                 cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
             case 1:
                 cell.itemTitleLabel.text = self.viewModel.sortTitle[indexPath.row]
+                if indexPath.row == self.viewModel.sortTitle.count - 1{
+                    cell.iconImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
+                }
             default:
                 break
             }
@@ -119,7 +124,11 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.applyFilterButton.isEnabled = true
-        self.applyFilterButton.backgroundColor = .black
+        if indexPath.section == 0 {
+            self.applyFilterButton.backgroundColor = self.viewModel.categorys[indexPath.row].color
+        }else {
+            self.applyFilterButton.backgroundColor = .black
+        }
         resettBarButtonItem.isEnabled = true
         viewModel.currentIndexPath = indexPath
     }
@@ -144,12 +153,10 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         self.collectionView.deselectAllItems(animated: true)
         self.viewModel.resetFilter()
         self.viewModel.filter(controller: self, category_id: nil, sort_id: nil, active: false)
-        
     }
     
     @objc func applyFilter(sender:UIButton){
         guard let indexPath = viewModel.currentIndexPath else { return }
-        
         if (indexPath.section == 0) {
             viewModel.removeSortId()
             viewModel.category_id = viewModel.categorys[indexPath.row].id
@@ -161,7 +168,6 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         }
         self.viewModel.filter(controller: self, category_id: viewModel.category_id, sort_id: viewModel.sort_id , active: true)
         self.dismiss(animated: true, completion: nil)
-        
     }
     
 }

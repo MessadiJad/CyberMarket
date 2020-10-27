@@ -91,13 +91,12 @@ class DetailsItemViewController: UIViewController {
     }
     
     func setupItemDiscriptionLabel(description: String) {
-        scrollView.addSubview(itemDescriptionLabel)
-
         itemDescriptionLabel.textColor = .black
         itemDescriptionLabel.font = UIFont.systemFont(ofSize: 17)
         itemDescriptionLabel.numberOfLines = 0
         itemDescriptionLabel.textAlignment = .left
         itemDescriptionLabel.text = description
+        scrollView.addSubview(itemDescriptionLabel)
         
         itemDescriptionLabel.anchor(top: itemDateLabel.bottomAnchor, left: itemImageView.leftAnchor, bottom: scrollView.bottomAnchor, right:  view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom:80, paddingRight: 10, width: 0, height: 0, enableInsets: true)
         
@@ -118,7 +117,7 @@ class DetailsItemViewController: UIViewController {
     
     func setupUrgentIndicator(urgent: Bool) {
         urgentImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    
+        
         urgentImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
         urgentImageView.tintColor = .init(hex: "#ff6961")
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit

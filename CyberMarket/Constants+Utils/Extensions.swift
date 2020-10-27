@@ -18,7 +18,6 @@ extension UIView {
             topInset = insets.top
             bottomInset = insets.bottom
         }
-    
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
@@ -39,7 +38,6 @@ extension UIView {
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
-        
     }
     
 }
@@ -57,7 +55,6 @@ extension UIImageView {
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
             }
-                
         }.resume()
     }
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
@@ -73,7 +70,6 @@ extension UICollectionView {
         for indexPath in selectedItems { deselectItem(at: indexPath, animated: animated) }
     }
 }
-
 
 extension UIButton {
     func create(_ title : String, titleColor: UIColor, backgroundColor : UIColor){

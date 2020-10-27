@@ -5,8 +5,6 @@
 //  Created by Jad Messadi on 10/22/20.
 //
 import UIKit
-import Foundation
-
 
 extension ListItemsViewController{
     
@@ -21,10 +19,8 @@ extension ListItemsViewController{
         filterButton.addTarget(self, action:  #selector(didSelectFilter), for: UIControl.Event.touchUpInside)
         filterButton.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
         filterButton.tintColor = .black
-
         let barButton = UIBarButtonItem(customView: filterButton)
         self.navigationItem.rightBarButtonItem = barButton
     }
-    
     
 }

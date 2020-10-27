@@ -22,7 +22,6 @@ enum CategoryListResponse {
     case Failure(error: Error)
 }
 
-
 class ItemService {
     
     static let sharedService = ItemService()
@@ -75,7 +74,7 @@ class ItemService {
                 } catch let error as NSError {
                     result = ItemListResponse.Failure(error: error)
                     NotificationCenter.default.post(name: Notification.Name("ShowRetryButtonNotificationIdentifier"), object: nil)
-
+                    
                 }
             } else {
                 result = ItemListResponse.Success(item: [Item]())
@@ -127,5 +126,5 @@ class ItemService {
         task.resume()
         
     }
-
+    
 }

@@ -1,5 +1,5 @@
 //
-//  ListCell.swift
+//  ItemCell.swift
 //  CyberMarket
 //
 //  Created by Jad Messadi on 10/21/20.
@@ -40,7 +40,6 @@ class ItemCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,7 +47,6 @@ class ItemCell: UITableViewCell {
     }
     
     func setupUrgentIcon(urgent: Bool){
-
         urgentImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
         urgentImageView.tintColor = .init(hex: "#ff6961")
         urgentImageView.contentMode = UIView.ContentMode.scaleAspectFit

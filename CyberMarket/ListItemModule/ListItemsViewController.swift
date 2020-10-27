@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ListItemsViewController.swift
 //  CyberMarket
 //
 //  Created by Jad Messadi on 10/21/20.
@@ -9,16 +9,14 @@ import UIKit
 
 
 class ListItemsViewController: UITableViewController, BadgeShownDelegate {
- 
     
     let cellReuseIdendifier = "itemCellId"
-    
     private var viewModel = ListViewModel()
     var detailsCoordinator: DetailsItemCoordinator?
     var filterCoordinator: FilterCoordinator?
     let spinnerView = SpinnerView()
     var filterButton = UIButton()
-
+    
     init(viewModel: ListViewModel ) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -29,18 +27,14 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     }
     
     override func viewDidLoad() {
-        
         spinnerView.show(uiView: self.view)
         self.initNavigationBar()
         viewModel.delegate = self
-
         tableView.backgroundColor = .init(hex: "#f0f0f0")
         tableView.tableFooterView = UIView()
         tableView.register(ItemCell.self, forCellReuseIdentifier: cellReuseIdendifier)
         fetchData()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: Notification.Name("RetryServiceNotificationIdentifier"), object: nil)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +42,16 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
         self.tableView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
     @objc func fetchData()  {
         viewModel.getCategory{ loaded in
             DispatchQueue.main.async { [self] in
-            self.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
-        
         viewModel.getItemList { loaded in
             if loaded {
                 DispatchQueue.main.async { [self] in
@@ -83,7 +80,6 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
             if let list_category_id = viewModel.filteredItems[indexPath.row].category_id {
                 cell.category = viewModel.categorys[list_category_id - 1]
             }
-            
             return cell
         }
         return UITableViewCell()
@@ -93,7 +89,6 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     {
         let verticalPadding: CGFloat = 8
         let horizentalPadding: CGFloat = 8
-        
         let maskLayer = CALayer()
         maskLayer.backgroundColor = UIColor.white.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: horizentalPadding/2, dy: verticalPadding/2)
@@ -119,13 +114,9 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     func showBadge(number: Int) {
         self.navigationItem.rightBarButtonItem!.addBadge(number: number)
     }
-  
+    
     func hideBadge() {
         self.navigationItem.rightBarButtonItem!.removeBadge()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
 }

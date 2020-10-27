@@ -15,7 +15,6 @@ protocol FilterViewControllerDelegate:class {
 class FilterViewModel {
     weak var delegate: FilterViewControllerDelegate?
     var currentIndexPath : IndexPath?
-    
     var items = [Item]()
     var categorys = [Category]()
     var sortTitle = [NSLocalizedString("SORT_NEWEST_DATE_BUTTON", comment: ""),
@@ -25,9 +24,8 @@ class FilterViewModel {
     var category_id : Int?
     var sort_id : Int?
     
-    init() {
-        
-    }
+    init() {}
+    
     init(items: [Item], categorys : [Category]) {
         self.items = items
         self.categorys = categorys

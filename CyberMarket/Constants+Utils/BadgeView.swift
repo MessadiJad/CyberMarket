@@ -1,3 +1,10 @@
+//
+//  BadgeView.swift
+//  CyberMarket
+//
+//  Created by Jad Messadi on 10/27/20.
+//
+
 import UIKit
 
 extension CAShapeLayer {
@@ -19,20 +26,18 @@ extension UIBarButtonItem {
             return nil
         }
     }
-
+    
     func addBadge(number: Int, withOffset offset: CGPoint = CGPoint.zero, andColor color: UIColor = .init(hex: "#ff6961"), andFilled filled: Bool = true) {
         guard let view = self.value(forKey: "view") as? UIView else { return }
-
+        
         badgeLayer?.removeFromSuperlayer()
-
-        // Initialize Badge
+        
         let badge = CAShapeLayer()
         let radius = CGFloat(7)
         let location = CGPoint(x: view.frame.width - (radius + offset.x), y: (radius + offset.y))
         badge.drawCircleAtLocation(location: location, withRadius: radius, andColor: color, filled: filled)
         view.layer.addSublayer(badge)
-
-        // Initialiaze Badge's label
+        
         let label = CATextLayer()
         label.string = "\(number)"
         label.alignmentMode = .center
@@ -42,18 +47,16 @@ extension UIBarButtonItem {
         label.backgroundColor = UIColor.clear.cgColor
         label.contentsScale = UIScreen.main.scale
         badge.addSublayer(label)
-
-        // Save Badge as UIBarButtonItem property
-        objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
+        objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-
+    
     func updateBadge(number: Int) {
         if let text = badgeLayer?.sublayers?.filter({ $0 is CATextLayer }).first as? CATextLayer {
             text.string = "\(number)"
         }
     }
-
+    
     func removeBadge() {
         badgeLayer?.removeFromSuperlayer()
     }

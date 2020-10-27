@@ -1,5 +1,5 @@
 //
-//  Colors.swift
+//  Colors+Extensions.swift
 //  CyberMarket
 //
 //  Created by Jad Messadi on 10/22/20.

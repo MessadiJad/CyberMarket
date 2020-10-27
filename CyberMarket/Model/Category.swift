@@ -17,5 +17,4 @@ class Category {
         self.color = color
     }
     
-    
 }

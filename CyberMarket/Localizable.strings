@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  CyberMarket
-
-  Created by Jad Messadi on 10/26/20.
-  
-*/
+ Localizable.strings
+ CyberMarket
+ 
+ Created by Jad Messadi on 10/26/20.
+ 
+ */
 
 // Filtre module strings
 "FILTRE_TITLE" = "Filtre";
@@ -14,9 +14,9 @@
 "APPLY_BUTTON" = "Appliquer";
 "SORT_NEWEST_DATE_BUTTON" = "Les plus recents";
 "SORT_OLDER_DATE_BUTTON" = "Les plus anciens";
-"SORT_IMPORTANT_BUTTON" = "Les plus urgents";
+"SORT_IMPORTANT_BUTTON" = "Les plus urgents     ";
 
-// INTERNET CONNECTION ERROR
+// Internet connection error strings
 "NO_INTERNET_TITLE" = "Pas de connexion Internet";
 "NO_INTERNET_BODY_MESSAGE" = "CyberMarket nécessite une connexion Internet";
 
@@ -27,7 +27,7 @@
 // SpinnerView strings
 "RETRY_BUTTON" = "Réessayer";
 
-//ErrorView
+//ErrorView strings
 "ERROR_TITLE" = "Erreur";
 "ERROR_BODY_ITEMS" = "Erreur lors de la récupération des éléments";
 "ERROR_TITLE_CATEGORY" = "Erreur lors de la récupération de la catégorie";

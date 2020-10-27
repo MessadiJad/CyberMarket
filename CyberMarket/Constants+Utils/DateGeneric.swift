@@ -1,3 +1,9 @@
+//
+//  DateGeneric.swift
+//  CyberMarket
+//
+//  Created by Jad Messadi on 10/22/20.
+//
 
 import Foundation
 
@@ -29,7 +35,7 @@ enum DateFormatApp {
 struct DateApp {
     
     static func date(fromString stringDate:String ,withFormat format:DateFormatApp) -> Date? {
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = format.text
         formatter.locale = Locale(identifier: "en_US_POSIX")

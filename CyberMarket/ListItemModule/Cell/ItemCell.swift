@@ -53,14 +53,14 @@ class ItemCell: UITableViewCell {
         urgentImageView.layer.masksToBounds = true
         urgentImageView.isHidden = !urgent
         addSubview(urgentImageView)
-        urgentImageView.anchor(top: self.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 30, height: 30, enableInsets: false)
+        urgentImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 30, height: 30, enableInsets: false)
     }
     
     func setupCategoryView(color: UIColor){
         categoryView.backgroundColor = color
         addSubview(categoryView)
         
-        categoryView.anchor(top: self.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 15, height: 0, enableInsets: true)
+        categoryView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 15, height: 0, enableInsets: true)
     }
     
     func setupItemImage(imageUrl: String){
@@ -81,7 +81,7 @@ class ItemCell: UITableViewCell {
         itemTitleLabel.text = title
         addSubview(itemTitleLabel)
         
-        itemTitleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor , right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 30, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
+        itemTitleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor , right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 30, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
     func setupItemCreatedDateLabel(date: Date){
@@ -92,7 +92,7 @@ class ItemCell: UITableViewCell {
         itemCreatedDateLabel.text = DateApp.stringWithLocalTime(fromDate: date, withFormat: .dateFormat)
         addSubview(itemCreatedDateLabel)
         
-        itemCreatedDateLabel.anchor(top: itemTitleLabel.bottomAnchor, left: self.leftAnchor, bottom: nil , right: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
+        itemCreatedDateLabel.anchor(top: itemTitleLabel.bottomAnchor, left: leftAnchor, bottom: nil , right: itemPriceLabel.leftAnchor, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
     func setupItemPriceLabel(price: String){
@@ -103,7 +103,7 @@ class ItemCell: UITableViewCell {
         itemPriceLabel.text = price
         addSubview(itemPriceLabel)
         
-        itemPriceLabel.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right:self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 35, enableInsets: false)
+        itemPriceLabel.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 35, enableInsets: false)
     }
     
 }

@@ -19,7 +19,6 @@ final class AppCoordinator {
     }
     
     deinit {
-        print("deallocing \(self)")
     }
     
     func start() {

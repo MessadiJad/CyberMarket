@@ -19,7 +19,6 @@ final class FilterCoordinator: Coordinator {
     }
 
     deinit {
-        print("deallocing \(self)")
     }
 
     func start() {

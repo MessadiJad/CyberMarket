@@ -19,7 +19,6 @@ final class ListItemsCoordinator: Coordinator {
     }
     
     deinit {
-        print("deallocing \(self)")
     }
     
     func start() {

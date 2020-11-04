@@ -112,7 +112,7 @@ class DetailsItemViewController: UIViewController {
         itemPriceButton.tintColor = .white
         self.view.addSubview(itemPriceButton)
         
-        itemPriceButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 70, enableInsets: true)
+        itemPriceButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right:  view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 70, enableInsets: true)
     }
     
     func setupUrgentIndicator(urgent: Bool) {

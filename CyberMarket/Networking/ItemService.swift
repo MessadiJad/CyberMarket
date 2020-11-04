@@ -43,11 +43,11 @@ class ItemService {
                 do {
                     var returnedItem = [Item]()
                     
-                    if let itemEntries =  try JSONSerialization.jsonObject(with: data, options: []) as? NSArray  {
+                    if let itemEntries =  try JSONSerialization.jsonObject(with: data, options: []) as? Array<Any>  {
                         
                         for entry in itemEntries {
                             
-                            let itemEntry = entry as? NSDictionary
+                            let itemEntry = entry as? Dictionary<String, Any>
                             
                             guard let category_id = itemEntry?["category_id"] as? Int else { continue }
                             
@@ -57,7 +57,7 @@ class ItemService {
                             
                             guard let price = itemEntry?["price"] as? Float else { continue }
                             
-                            let imageEntry = itemEntry?["images_url"] as? NSDictionary
+                            let imageEntry = itemEntry?["images_url"] as? Dictionary<String, Any>
                             guard let thumb = imageEntry?["thumb"] as? String else { continue }
                             
                             guard let creationDate = itemEntry?["creation_date"] as? String else { continue }
@@ -101,11 +101,11 @@ class ItemService {
                 do {
                     var returnedCategory = [Category]()
                     
-                    if let categoryEntries =  try JSONSerialization.jsonObject(with: data, options: []) as? NSArray  {
+                    if let categoryEntries =  try JSONSerialization.jsonObject(with: data, options: []) as? Array<Any>  {
                         
                         for entry in categoryEntries {
                             
-                            let categoryEntry = entry as? NSDictionary
+                            let categoryEntry = entry as? Dictionary<String, Any>
                             
                             guard let category_id = categoryEntry?["id"] as? Int else { continue }
                             

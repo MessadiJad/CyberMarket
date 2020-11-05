@@ -5,35 +5,57 @@
 //  Created by Jad Messadi on 10/21/20.
 //
 
-class Item {
+struct Item: Codable {
     
-    var id: Int!
-    var category_id: Int!
-    var title: String!
-    var description: String!
+    var id, categoryId: Int!
+    var title, description, creationDate: String!
+    var imagesUrl :[String:String]?
+    var largeImage : String?
+    var smallImage: String?
     var price: Float!
-    var images_url : String!
-    var creation_date: String!
-    var is_urgent: Bool!
+    var isUrgent: Bool!
     
-    init(category_id: Int, title: String, description: String, price: Float, images_url: String, creation_date: String, is_urgent:Bool) {
-        self.category_id = category_id
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+        self.categoryId = try container.decodeIfPresent(Int.self, forKey: .categoryId)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        self.description = try container.decodeIfPresent(String.self, forKey: .description)
+        self.price = try container.decodeIfPresent(Float.self, forKey: .price)
+        self.imagesUrl = try container.decodeIfPresent([String: String].self, forKey: .imagesUrl)
+        if let urls = self.imagesUrl {
+            self.largeImage = urls["thumb"]
+            self.smallImage = urls["small"]
+        }
+        self.creationDate = try container.decodeIfPresent(String.self, forKey: .creationDate)
+        self.isUrgent = try container.decodeIfPresent(Bool.self, forKey: .isUrgent)
+    }
+    
+    init(categoryId: Int, title: String, description: String, price: Float,imagesUrl:Dictionary<String, String>, creationDate: String, isUrgent:Bool) {
+        self.categoryId = categoryId
         self.title = title
         self.description = description
         self.price = price
-        self.images_url = images_url
-        self.creation_date = creation_date
-        self.is_urgent = is_urgent
+        self.imagesUrl = imagesUrl
+        self.price = price
+        self.creationDate = creationDate
+        self.isUrgent = isUrgent
     }
-    
-    enum CodingKeys: String, CodingKey {
+
+    enum CodingKeys: String, CodingKey   {
         case id
-        case category_id
+        case categoryId
         case title
         case description
+        case imagesUrl
         case price
-        case creation_date
-        case is_urgent
+        case creationDate
+        case isUrgent
+    }
+    
+    enum ItemsResponse {
+        case results([Item])
+        case error(Error)
     }
     
 }

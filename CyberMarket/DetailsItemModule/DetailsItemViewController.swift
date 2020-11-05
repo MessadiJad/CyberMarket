@@ -49,7 +49,7 @@ class DetailsItemViewController: UIViewController {
         setupItemDiscriptionLabel(description: viewModel.description)
         setupItemPriceView(price: "  \(String(viewModel.price)) €")
         setupUrgentIndicator(urgent: viewModel.isUrgent)
-        setupCategoryViewIndicator(color: viewModel.categoryName.color)
+        setupCategoryViewIndicator(color: .randomColor(seed: viewModel.categoryName.name))
     }
     
     func setupScrollView(){
@@ -103,7 +103,7 @@ class DetailsItemViewController: UIViewController {
     }
     
     func setupItemPriceView(price: String) {
-        itemPriceButton.create(price, titleColor: .white, backgroundColor: viewModel.categoryName.color)
+        itemPriceButton.create(price, titleColor: .white, backgroundColor: .randomColor(seed: viewModel.categoryName.name))
         if #available(iOS 13.0, *) {
             itemPriceButton.setImage(UIImage(systemName: "cart") , for: .normal)
         } else {

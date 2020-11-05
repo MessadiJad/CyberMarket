@@ -23,7 +23,7 @@
 		E1207B9B2546F640009046E8 /* TestFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */; };
 		E13837E02548061A0095D48D /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13837DF2548061A0095D48D /* ErrorAlertView.swift */; };
 		E15D04AF25409C44008DC516 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04AE25409C44008DC516 /* Extensions.swift */; };
-		E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* ItemService.swift */; };
+		E15D04C42540AAF1008DC516 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D04C32540AAF1008DC516 /* Service.swift */; };
 		E18F13D62547719E00150A9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E18F13D52547719E00150A9D /* Localizable.strings */; };
 		E198830D25435B70001F8B55 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198830C25435B70001F8B55 /* FilterViewController.swift */; };
 		E198831225435C02001F8B55 /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198831125435C02001F8B55 /* FilterCoordinator.swift */; };
@@ -85,7 +85,7 @@
 		E1207B9A2546F640009046E8 /* TestFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFilterViewModel.swift; sourceTree = "<group>"; };
 		E13837DF2548061A0095D48D /* ErrorAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		E15D04AE25409C44008DC516 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E15D04C32540AAF1008DC516 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		E15D04C32540AAF1008DC516 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E18F13D52547719E00150A9D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E198830C25435B70001F8B55 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E198831125435C02001F8B55 /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				E1DDF0C22544B8CE00DB1F41 /* Reachability.swift */,
-				E15D04C32540AAF1008DC516 /* ItemService.swift */,
+				E15D04C32540AAF1008DC516 /* Service.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 			files = (
 				E198831225435C02001F8B55 /* FilterCoordinator.swift in Sources */,
 				E1D73DCF25440E44003E8ADA /* TagFlowLayout.swift in Sources */,
-				E15D04C42540AAF1008DC516 /* ItemService.swift in Sources */,
+				E15D04C42540AAF1008DC516 /* Service.swift in Sources */,
 				E11087972540854C00BF38F0 /* ListItemsViewController.swift in Sources */,
 				E1C2303225422FE20052AC17 /* ListItemsCoordinator.swift in Sources */,
 				E1DDF0C32544B8CE00DB1F41 /* Reachability.swift in Sources */,

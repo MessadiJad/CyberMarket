@@ -47,26 +47,30 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     }
     
     @objc func fetchData()  {
-        viewModel.getCategory{ loaded in
-            DispatchQueue.main.async { [self] in
-                self.tableView.reloadData()
-            }
-        }
         viewModel.getItemList { loaded in
             if loaded {
                 DispatchQueue.main.async { [self] in
                     spinnerView.hide()
-                    self.tableView.reloadData()
-                }
-            }
+                    self.tableView.reloadData() }
+            } else {
+               showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_BODY_ITEMS", comment: "")) }
         }
+        
+        viewModel.getCategory { loaded in
+            if loaded {
+                DispatchQueue.main.async { [self] in
+                    self.tableView.reloadData() }
+            } else {
+               showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_TITLE_CATEGORY", comment: "")) }
+        }
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (viewModel.filteredItems.count == 0) {
+        if (viewModel.allItems.count == 0) {
             filterButton.isEnabled = false
         }else{ filterButton.isEnabled = true }
-        return viewModel.filteredItems.count
+        return viewModel.allItems.count
         
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -76,10 +80,14 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdendifier, for: indexPath) as? ItemCell {
-            cell.item = viewModel.filteredItems[indexPath.row]
-            if let list_category_id = viewModel.filteredItems[indexPath.row].category_id {
-                cell.category = viewModel.categorys[list_category_id - 1]
-            }
+            cell.item = viewModel.allItems[indexPath.row]
+         
+            if let list_category_id = viewModel.allItems[indexPath.row].categoryId {
+                if viewModel.categorys.count != 0 {
+                    cell.category = viewModel.categorys[list_category_id - 1]
+                } else { 
+                    showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_GENERIC", comment: "")) }
+                }
             return cell
         }
         return UITableViewCell()
@@ -98,14 +106,14 @@ class ListItemsViewController: UITableViewController, BadgeShownDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let navigationController = self.navigationController {
-            detailsCoordinator = DetailsItemCoordinator(navigationController: navigationController , item: self.viewModel.filteredItems[indexPath.row], category: self.viewModel.categorys[self.viewModel.filteredItems[indexPath.row].category_id - 1])
+            detailsCoordinator = DetailsItemCoordinator(navigationController: navigationController , item: self.viewModel.allItems[indexPath.row], category: self.viewModel.categorys[self.viewModel.allItems[indexPath.row].categoryId - 1])
             detailsCoordinator?.start()
         }
     }
     
     @objc func didSelectFilter() {
         if let navigationController = self.navigationController {
-            filterCoordinator = FilterCoordinator(navigationController: navigationController, items: viewModel.items, categorys: self.viewModel.categorys)
+            filterCoordinator = FilterCoordinator(navigationController: navigationController, items: viewModel.allItems, categorys: self.viewModel.categorys)
             filterCoordinator?.filterViewController.viewModel.delegate =  self.viewModel
             filterCoordinator?.start()
         }

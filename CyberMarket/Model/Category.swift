@@ -4,17 +4,32 @@
 //
 //  Created by Jad Messadi on 10/22/20.
 //
-import UIKit
-class Category {
+
+
+class Category: Codable {
     
     var id: Int!
     var name: String!
-    var color: UIColor!
     
-    init(id: Int, name: String, color: UIColor) {
+    required public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)        
+    }
+    
+    init(id: Int, name: String) {
         self.id = id
         self.name = name
-        self.color = color
+    }
+    
+    enum CodingKeys: String, CodingKey   {
+        case id
+        case name
+    }
+    
+    enum CategoryResponse {
+        case results([Category])
+        case error(Error)
     }
     
 }

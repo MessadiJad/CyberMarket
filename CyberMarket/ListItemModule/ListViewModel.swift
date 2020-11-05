@@ -14,69 +14,63 @@ protocol BadgeShownDelegate:class {
 
 class ListViewModel: FilterViewControllerDelegate {
     
-    var items = [Item]()
     var categorys = [Category]()
-    var filteredItems = [Item]()
+    var allItems = [Item]()
+    var initialList = [Item]()
     weak var delegate: BadgeShownDelegate?
     typealias CompletionHandler = (_ success:Bool) -> Void
     
     func getItemList(completionHandler: @escaping CompletionHandler) {
-        ItemService.sharedService.getItemsWithCompletion { [self] response in
-            removeAllKeys()
+        removeAllKeys()
+        Service.sharedService.getItemsWithCompletion { [self] response in
             switch response {
-            case .Failure(_):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                    showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_BODY_ITEMS", comment: ""))
-                }
-            case .Success(let returnedItem):
-                self.items = returnedItem
-                self.filteredItems = self.items
+            case .results(let results) :
+                self.initialList = results
+                self.allItems = results
                 completionHandler(true)
+            case .error(_):
+            completionHandler(false)
             }
         }
     }
     
     func getCategory(completionHandler: @escaping CompletionHandler){
-        ItemService.sharedService.getCategoryWithCompletion { response in
+        Service.sharedService.getCategoryWithCompletion { response in
             switch response {
-            case .Failure(_):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-                    showErrorAlertView(title: NSLocalizedString("ERROR_TITLE", comment: ""), body: NSLocalizedString("ERROR_TITLE_CATEGORY", comment: ""))
-                }
-            case .Success(let returnedCategory):
-                self.categorys = returnedCategory
+            case .results(let results):
+                self.categorys = results
                 completionHandler(true)
-                
+            case .error(_):
+                completionHandler(false)
             }
         }
     }
     
-    func filterd(_ controller: FilterViewController,items: [Item], category_id: Int?, sort_id: Int?, active: Bool) {
+    func filterd(_ controller: FilterViewController, category_id: Int?, sort_id: Int?, active: Bool) {
         if (active){
+            self.allItems = initialList
             if sort_id == nil {
-                let filtered = items.filter { $0.category_id == category_id }
-                self.filteredItems = filtered
+                let filteredItems = allItems.filter { $0.categoryId == category_id }
+                self.allItems = filteredItems
             }else {
                 switch sort_id {
                 case 12 :
-                    self.items.sort {
-                        $0.creation_date > $1.creation_date
+                    self.allItems.sort {
+                        $0.creationDate > $1.creationDate
                     }
-                    self.filteredItems = self.items
                 case 13 :
-                    self.items.sort {
-                        $0.creation_date < $1.creation_date
+                    self.allItems.sort {
+                        $0.creationDate < $1.creationDate
                     }
-                    self.filteredItems = self.items
                 case 14:
-                    let filtered = items.filter { $0.is_urgent == true }
-                    self.filteredItems = filtered                    
+                    let filteredItems = allItems.filter { $0.isUrgent == true }
+                    self.allItems = filteredItems
                 default:
                     break
                 }
             }
             delegate?.showBadge(number: 1)
-        } else {self.filteredItems = items
+        } else {self.allItems = initialList
             delegate?.hideBadge()
         }
     }

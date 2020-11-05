@@ -5,11 +5,10 @@
 //  Created by Jad Messadi on 10/23/20.
 //
 
-import Foundation
 import UIKit
 
 protocol FilterViewControllerDelegate:class {
-    func filterd(_ controller: FilterViewController, items: [Item], category_id: Int?,sort_id:Int?, active: Bool)
+    func filterd(_ controller: FilterViewController, category_id: Int?,sort_id:Int?, active: Bool)
 }
 
 class FilterViewModel {
@@ -32,7 +31,7 @@ class FilterViewModel {
     }
     
     func filter (controller: FilterViewController, category_id:Int?, sort_id: Int?, active: Bool) {
-        delegate?.filterd(controller, items:items , category_id: category_id, sort_id: sort_id, active: active)
+        delegate?.filterd(controller, category_id: category_id, sort_id: sort_id, active: active)
     }
     
     func resetFilter() {

@@ -72,19 +72,13 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
         if kind == UICollectionView.elementKindSectionHeader {
             if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader {
                 switch indexPath.section {
-                case 0:
-                    sectionHeader.HeaderTitleLabel.text = NSLocalizedString("CATEGORY_SECTION_TITLE", comment: "")
-                case 1:
-                    sectionHeader.HeaderTitleLabel.text = NSLocalizedString("SORT_SECTION_TITLE", comment: "")
-                default:
-                    break
-                }
+                case 0: sectionHeader.HeaderTitleLabel.text = NSLocalizedString("CATEGORY_SECTION_TITLE", comment: "")
+                case 1: sectionHeader.HeaderTitleLabel.text = NSLocalizedString("SORT_SECTION_TITLE", comment: "")
+                default: break }
                 return sectionHeader
             }
             return UICollectionReusableView()
-        } else { 
-            return UICollectionReusableView()
-        }
+        } else { return UICollectionReusableView() }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -93,30 +87,20 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return self.viewModel.categorys.count
-        case 1:
-            return self.viewModel.sortTitle.count
-        default:
-            break
-        }
+            case 0: return self.viewModel.categorys.count
+            case 1: return self.viewModel.sortTitle.count
+        default:  break }
         return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? TagViewCell {
             switch indexPath.section {
-            case 0:
-                cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
-            case 1:
-                cell.itemTitleLabel.text = self.viewModel.sortTitle[indexPath.row]
-                if indexPath.row == self.viewModel.sortTitle.count - 1{
-                    cell.iconImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate)
-                }
-            default:
-                break
-            }
+            case 0:  cell.itemTitleLabel.text = self.viewModel.categorys[indexPath.row].name
+            case 1: cell.itemTitleLabel.text = self.viewModel.sortTitle[indexPath.row]
+                    if indexPath.row == self.viewModel.sortTitle.count - 1{
+                        cell.iconImageView.image = UIImage(named: "urgent_icon")?.withRenderingMode(.alwaysTemplate) }
+            default: break }
             return cell
         }
         return UICollectionViewCell()
@@ -125,10 +109,8 @@ class FilterViewController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.applyFilterButton.isEnabled = true
         if indexPath.section == 0 {
-            self.applyFilterButton.backgroundColor = self.viewModel.categorys[indexPath.row].color
-        }else {
-            self.applyFilterButton.backgroundColor = .black
-        }
+        self.applyFilterButton.backgroundColor = .randomColor(seed: self.viewModel.categorys[indexPath.row].name)
+        } else { self.applyFilterButton.backgroundColor = .black }
         resettBarButtonItem.isEnabled = true
         viewModel.currentIndexPath = indexPath
     }

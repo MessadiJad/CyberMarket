@@ -18,22 +18,19 @@ class ItemCell: UITableViewCell {
     var category : Category? {
         didSet {
             if let catg = category {
-                setupCategoryView(color: catg.color)
-                itemPriceLabel.backgroundColor = catg.color
-            }
+                setupCategoryView(color: .randomColor(seed: (catg.name)!))
+                itemPriceLabel.backgroundColor = .randomColor(seed: ((catg.name)!)) }
         }
     }
     
     var item : Item? {
         didSet {
             if let itm = item {
-                setupUrgentIcon(urgent: itm.is_urgent)
-                setupItemImage(imageUrl: itm.images_url)
+                setupUrgentIcon(urgent: itm.isUrgent)
+                setupItemImage(imageUrl: itm.largeImage!)
                 setupItemTitleLabel(title: itm.title)
                 setupItemPriceLabel(price:  String(itm.price) + " €")
-                if let date = DateApp.dateLocal(fromString: itm.creation_date, withFormat: .isoFull) {
-                    setupItemCreatedDateLabel(date: date)
-                }
+                if let date = DateApp.dateLocal(fromString: itm.creationDate, withFormat: .isoFull) {  setupItemCreatedDateLabel(date: date)}
             }
         }
     }
